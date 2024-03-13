@@ -7,7 +7,14 @@ class Vecteur3D {
 	double z;
 
 	public:
-	
+
+	Vecteur3D():x(0.0),y(0.0),z(0.0)
+	{}
+	Vecteur3D(double a,double b, double c) :x(a),y(b),z(c)
+	{}
+	Vecteur3D(Vecteur3D const& autre) :x(autre.x),y(autre.y),z(autre.z)
+	{}
+
 	void set_coord(int n, double a );
 	
 	void affiche();
