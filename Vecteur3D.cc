@@ -90,6 +90,5 @@ ostream& operator<<(ostream& sortie, Vecteur3D const& v) {
     return nouveau;
     }
  
- int main(){
-	 return 0;}
+ 
  
