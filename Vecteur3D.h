@@ -44,4 +44,5 @@ class Vecteur3D {
 bool operator==(Vecteur3D& v1, Vecteur3D const& v2);
 std::ostream& operator<<(std::ostream& sortie, Vecteur3D const& v);
 
- 
+ Vecteur3D operator+(Vecteur3D& v1,Vecteur3D& v2);
+ Vecteur3D operator-(Vecteur3D& v1,Vecteur3D& v2);
