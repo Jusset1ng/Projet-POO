@@ -34,6 +34,8 @@ ostream& operator<<(ostream& sortie, Vecteur3D const& v) {
 
 	return nouveau;
 	}
+	Vecteur3D operator+(Vecteur3D& v1,Vecteur3D& v2)
+	{return v1.addition(v2);}
 		
 	Vecteur3D Vecteur3D::soustraction(Vecteur3D& autre) const {
 		
@@ -43,6 +45,9 @@ ostream& operator<<(ostream& sortie, Vecteur3D const& v) {
 		nouveau.set_coord(2, z-autre.z );
 	return nouveau;
 	}
+	
+	Vecteur3D operator-(Vecteur3D& v1,Vecteur3D& v2)
+	{return v1.soustraction(v2);}
 		
 	Vecteur3D Vecteur3D::oppose() const {
 
