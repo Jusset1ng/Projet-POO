@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Vecteur3D.h"
+#include <cmath>
 using namespace std;
 
     void Vecteur3D::set_coord(int n, double a ){
@@ -7,12 +8,22 @@ using namespace std;
 		if (n==1) y=a;
 		if (n==2) z=a;}
 	
-	void Vecteur3D::affiche (){
-		cout<< x <<"  "<< y << "  " << z <<endl;}
+	ostream& Vecteur3D::affiche(ostream& sortie)const {
+    sortie << x << "  " << y << "  " << z << endl;
+    return sortie;
+}
+
+ostream& operator<<(ostream& sortie, Vecteur3D const& v) {
+    return v.affiche(sortie);
+}
+	
 		
-	bool Vecteur3D::compare(Vecteur3D& vect, double p = 1e-10){
+	bool Vecteur3D::compare(Vecteur3D const& vect, double p = 1e-10) const{
         if(( abs(vect.x - x) < p) and ( abs(vect.y - y) < p) and ( abs(vect.z - z) < p)) return true;
-		else return false;}		
+		else return false;}	
+		
+		bool operator==(Vecteur3D& v1, Vecteur3D const& v2)
+	{return v1.compare(v2);}	
 			
 	Vecteur3D Vecteur3D::addition(Vecteur3D& autre) const {
 		
@@ -79,6 +90,6 @@ using namespace std;
     return nouveau;
     }
  
+ int main(){
+	 return 0;}
  
- 
-
