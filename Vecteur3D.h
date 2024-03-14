@@ -1,5 +1,5 @@
 #pragma once
-
+#include <iostream>
 class Vecteur3D {
 	private:
 	double x;
@@ -17,9 +17,9 @@ class Vecteur3D {
 
 	void set_coord(int n, double a );
 	
-	void affiche();
+	std::ostream& affiche(std::ostream& sortie)const;
 
-    bool compare(Vecteur3D& vect, double p );
+    bool compare(Vecteur3D const& vect, double p ) const;
 			
 	Vecteur3D addition(Vecteur3D& autre) const;
 		
@@ -38,5 +38,10 @@ class Vecteur3D {
     double norme2() const;
 
     Vecteur3D unitaire() const;
+    
+    
 };
+bool operator==(Vecteur3D& v1, Vecteur3D const& v2);
+std::ostream& operator<<(std::ostream& sortie, Vecteur3D const& v);
+
  
