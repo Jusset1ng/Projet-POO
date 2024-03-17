@@ -1,140 +1,62 @@
+#pragma once
 #include <iostream>
-#include "Vecteur3D.h"
-#include <cmath>
-using namespace std;
+class Vecteur3D {
+	private:
+	double x;
+	double y; 
+	double z;
 
-//--------METHODE--------//
+	public:
 
-void Vecteur3D::set_coord(int n, double a ){
-		if (n==0) x=a;
-		if (n==1) y=a;
-		if (n==2) z=a;
-		}
+	Vecteur3D():x(0.0),y(0.0),z(0.0)
+	{}
+	Vecteur3D(double a,double b, double c) :x(a),y(b),z(c)
+	{}
+	Vecteur3D(Vecteur3D const& autre) :x(autre.x),y(autre.y),z(autre.z)
+	{}
+
+	void set_coord(int n, double a );
 	
-ostream& Vecteur3D::affiche(ostream& sortie)const {
-    sortie << x << "  " << y << "  " << z << endl;
-    return sortie;
-}
+	std::ostream& affiche(std::ostream& sortie)const;
 
-
-
-bool Vecteur3D::compare(Vecteur3D const& vect, double p = 1e-10) const{
-    if(( abs(vect.x - x) < p) and ( abs(vect.y - y) < p) and ( abs(vect.z - z) < p)) return true;
-	else return false;}	
-		
-
+    bool compare(Vecteur3D const& vect, double p ) const;
 			
-Vecteur3D Vecteur3D::addition(const Vecteur3D& autre) const {
+	Vecteur3D addition(const Vecteur3D& autre) const;
 		
-	Vecteur3D nouveau;
-	nouveau.set_coord(0, x+autre.x );
-	nouveau.set_coord(1, y+autre.y );
-	nouveau.set_coord(2, z+autre.z );
-
-	return nouveau;
-	}
-
-	
-Vecteur3D Vecteur3D::soustraction(const Vecteur3D& autre) const {
+	Vecteur3D soustraction(const Vecteur3D& autre) const;
 		
-	Vecteur3D nouveau;
-	nouveau.set_coord( 0,  x-autre.x );
-	nouveau.set_coord(1,  y-autre.y );
-	nouveau.set_coord(2, z-autre.z );
-	return nouveau;
-	}
-	
-
+	Vecteur3D oppose() const;
 		
-Vecteur3D Vecteur3D::oppose() const {
-
-	Vecteur3D nouveau;
-	nouveau.set_coord(0, -x );
-	nouveau.set_coord(1, -y );
-	nouveau.set_coord(2, -z );
-	return nouveau; 
-    }
+	Vecteur3D mult(double a) const;
 		
-Vecteur3D Vecteur3D::mult(double a) const{
-	Vecteur3D nouveau;
-	nouveau.set_coord(0,  a*x );
-	nouveau.set_coord(1,  a*y );
-	nouveau.set_coord(2, a*z );
-	return nouveau;
-    }
-		
-double Vecteur3D::prod_scal(const Vecteur3D& autre) const{ 
-    return x*autre.x +y*autre.y +z*autre.z;
-    }
+	double prod_scal(const Vecteur3D& autre) const;
 
-Vecteur3D Vecteur3D::prod_vect(const Vecteur3D& autre) const{
-    Vecteur3D nouveau;
-    nouveau.set_coord(0, y*autre.z - z*autre.y);
-    nouveau.set_coord(1, z*autre.x - x*autre.z);
-    nouveau.set_coord(2, x*autre.y - y*autre.x);
-    return nouveau;
-    }
+    Vecteur3D prod_vect(const Vecteur3D& autre) const;
 
-double Vecteur3D::norme() const{
-    return sqrt(x*x + y*y + z*z);
-    }	
+	double norme() const;
 
-double Vecteur3D::norme2() const{
-    return x*x + y*y + z*z;
-    }
+    double norme2() const;
 
-Vecteur3D Vecteur3D::unitaire() const{
-    Vecteur3D nouveau;
-    double n(norme());
-    nouveau.set_coord(0, x/n);
-    nouveau.set_coord(1, y/n);
-    nouveau.set_coord(2, z/n);
-    return nouveau;
-    }
- 
- 
-//--------OPERATOR---------//
-ostream& operator<<(ostream& sortie, Vecteur3D const& v) 
-	{return v.affiche(sortie);}
-	
-bool operator==(Vecteur3D const& v1, Vecteur3D const& v2)
-	{return v1.compare(v2);}
+    Vecteur3D unitaire() const;
 
-bool operator!=(Vecteur3D const& v1, Vecteur3D const& v2)
-	{return !(v1.compare(v2));}
+	Vecteur3D operator+=(const Vecteur3D& autre);
 
-Vecteur3D Vecteur3D::operator+=(const Vecteur3D& autre){
-	x += autre.x;
-	y += autre.y;
-	z += autre.z;
+	Vecteur3D operator-=(const Vecteur3D& autre);
+    
+    
 
-	return *this;
-	}
+};
 
-Vecteur3D operator+(Vecteur3D v1, const Vecteur3D& v2)
-	{return v1 += v2;}
+bool operator==(Vecteur3D const& v1, Vecteur3D const& v2);
 
-Vecteur3D Vecteur3D::operator-=(const Vecteur3D& autre){
-	x -= autre.x;
-	y -= autre.y;
-	z -= autre.z;
+bool operator!=(Vecteur3D const& v1, Vecteur3D const& v2);
 
-	return *this;
-}
-		
-Vecteur3D operator-(Vecteur3D v1,const Vecteur3D& v2)
-	{return v1 -= v2;}	
+std::ostream& operator<<(std::ostream& sortie, Vecteur3D const& v);
 
-double operator^(const Vecteur3D& v1,const Vecteur3D& v2){
-	return v1.prod_scal(v2);
-}
+Vecteur3D operator+(Vecteur3D v1,const Vecteur3D& v2);
 
-Vecteur3D operator~(const Vecteur3D& v){
-	return v.unitaire();
-}
+Vecteur3D operator-(Vecteur3D v1,const Vecteur3D& v2);
 
+double operator^(const Vecteur3D& v1,const Vecteur3D& v2); //produit scalaire (Attention priorité faible)
 
-
-
-
- 
+Vecteur3D operator~(const Vecteur3D& v);
