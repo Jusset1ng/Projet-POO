@@ -1,1 +1,9 @@
-[Question P1.1] Comment repr�sentez-vous ces vecteurs ? Comment sont-ils organis�s : quels attributs ? quelles m�thodes ? quels droits d'acc�s ?
+[Question P1.1] Comment représentez-vous ces vecteurs ? Comment sont-ils organisés : quels attributs ? quelles méthodes ? quels droits d'accès ?
+
+
+[Question P4.1] Avez-vous ajouté un constructeur de copie ? Pourquoi (justifiez votre choix) ?
+
+
+[Question P4.2] Si l'on souhaitait ajouter un constructeur par coordonnées sphériques (deux angles et une longueur),
+  a] que cela impliquerait-il au niveau des attributs de la classe ?
+  b] quelle serait la difficulté majeure (voire l'impossibilité) de sa réalisation en C++ ? (C'est d'ailleurs pour cela qu'on ne vous demande pas de faire un tel constructeur !)
