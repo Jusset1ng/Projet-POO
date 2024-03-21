@@ -26,41 +26,24 @@ bool Vecteur3D::compare(Vecteur3D const& vect, double p = 1e-10) const{
 			
 Vecteur3D Vecteur3D::addition(const Vecteur3D& autre) const {
 		
-	Vecteur3D nouveau;
-	nouveau.set_coord(0, x+autre.x );
-	nouveau.set_coord(1, y+autre.y );
-	nouveau.set_coord(2, z+autre.z );
-
-	return nouveau;
+	return Vecteur3D(x+autre.x,y+autre.y,z+autre.z);
 	}
 
 	
 Vecteur3D Vecteur3D::soustraction(const Vecteur3D& autre) const {
 		
-	Vecteur3D nouveau;
-	nouveau.set_coord( 0,  x-autre.x );
-	nouveau.set_coord(1,  y-autre.y );
-	nouveau.set_coord(2, z-autre.z );
-	return nouveau;
+	return Vecteur3D(x-autre.x,y-autre.y,z-autre.z);
 	}
 	
 
 		
 Vecteur3D Vecteur3D::oppose() const {
 
-	Vecteur3D nouveau;
-	nouveau.set_coord(0, -x );
-	nouveau.set_coord(1, -y );
-	nouveau.set_coord(2, -z );
-	return nouveau; 
+	return Vecteur3D(-x,-y,-z);
     }
 		
 Vecteur3D Vecteur3D::mult(double a) const{
-	Vecteur3D nouveau;
-	nouveau.set_coord(0,  a*x );
-	nouveau.set_coord(1,  a*y );
-	nouveau.set_coord(2, a*z );
-	return nouveau;
+	return Vecteur3D(x*a,y*a,z*a);
     }
 		
 double Vecteur3D::prod_scal(const Vecteur3D& autre) const{ 
@@ -68,11 +51,7 @@ double Vecteur3D::prod_scal(const Vecteur3D& autre) const{
     }
 
 Vecteur3D Vecteur3D::prod_vect(const Vecteur3D& autre) const{
-    Vecteur3D nouveau;
-    nouveau.set_coord(0, y*autre.z - z*autre.y);
-    nouveau.set_coord(1, z*autre.x - x*autre.z);
-    nouveau.set_coord(2, x*autre.y - y*autre.x);
-    return nouveau;
+    return Vecteur3D(y*autre.z - z*autre.y,z*autre.x - x*autre.z,x*autre.y - y*autre.x);
     }
 
 double Vecteur3D::norme() const{
@@ -84,12 +63,8 @@ double Vecteur3D::norme2() const{
     }
 
 Vecteur3D Vecteur3D::unitaire() const{
-    Vecteur3D nouveau;
-    double n(norme());
-    nouveau.set_coord(0, x/n);
-    nouveau.set_coord(1, y/n);
-    nouveau.set_coord(2, z/n);
-    return nouveau;
+   double n(norme());
+    return Vecteur3D(x/n,y/n,z/n);
     }
  
  
