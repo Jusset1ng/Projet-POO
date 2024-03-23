@@ -12,7 +12,7 @@ void Vecteur3D::set_coord(int n, double a ){
 		}
 	
 ostream& Vecteur3D::affiche(ostream& sortie)const {
-    sortie << x << "  " << y << "  " << z << endl;
+    sortie << x << " " << y << " " << z ;
     return sortie;
 }
 

@@ -10,10 +10,17 @@ CXXFLAGS += -pedantic -Wall         # pour les purs et durs
 # CXXFLAGS += -g                    # pour debugger
 # CXXFLAGS += -O2                   # pour optimiser la vitesse
 
-all: testVecteur3D
+all: testVecteur3D testParticule
 
 Vecteur3D.o: Vecteur3D.cc Vecteur3D.h
 
 testVecteur3D.o: testVecteur3D.cc Vecteur3D.h
 
 testVecteur3D: testVecteur3D.o Vecteur3D.o
+
+Particule.o: Particule.cc Particule.h Vecteur3D.h
+
+testParticule.o: testParticule.cc Particule.h Vecteur3D.h
+
+testParticule: testParticule.o Particule.o Vecteur3D.o
+

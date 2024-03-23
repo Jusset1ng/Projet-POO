@@ -1,7 +1,6 @@
 
 #include <iostream>
 #include "Vecteur3D.h"
-#include "Vecteur3D.cc"
 using namespace std;
 
 
