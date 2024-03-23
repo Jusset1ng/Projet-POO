@@ -1,0 +1,14 @@
+Vecteur3D:
+Les instances x, y, z sont en privés, pas de protected car Particule::affiche() se sert de Vecteur3D::affiche()
+Les surcharges d'opérateurs peuvent être internes ou externes:
+On a utilisé de manière générale la surcharge interne pour les opérateurs qui ne créent pas de nouvel objet/variable de (ex. +=, -=), en revanche les autres opérateurs sont placés en dehors ( << l'est par nécessité, les autres par préférence), on remarque que l'on se sert de += et -= pour les definitions de + et - pour optimiser le programmes. Certains autres opérateurs comme ^ ou ~ se servent des méthodes prod_scal et unitaire
+conceptionnées plus tôt pour éviter le copier-coller.
+
+
+Particule:
+Cette classe se sert de la classe Vecteur3D car une particule n'est pas tout a fait un vecteur, en revanche la position et la vitesse d'une particule le sont. On ajoute donc #include "Vecteur3D.h" pour se servir de cette classe.
+Le constructeur se fait donc naturellement, on prend la décision de créer un constructeur prenant uniquement la masse car le constructeur par défaut de vecteur3D initialisant un vecteur nul a été créé précédemment, en revanche on ne pourra pas créer de vecteur avec position centré en l'origine ou vitesse nulle par défaut pour éviter toute confusion (ex. Particule p1(1.5, 2.3, 4.9, 0.1233) pourrait porter à confusion à savoir si il s'agit de la vitesse ou de la position qui est a (1.5, 2.3, 4.9) car elles sont toutes deux de même type.
+
+Anticipation du besoin d'un destructeur car par le futur nous créeront des milliers de particules.
+
+La méthode affiche() est définie et l'opérateur de surcharge << l'est aussi, en externe.
