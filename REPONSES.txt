@@ -35,3 +35,8 @@ La définition de cet opérateur doit necéssairement être en dehors de la clas
 ~ le vecteur unitaire
 Nous avons decidé de mettre toutes les définitions de ces opérateurs en dehors de la classe parcequ'elles créent un nouvelle donnée en retour lorsqu'elles sont utilisées que ce soit un vecteur, un bool ou un double.
 Finalement on a aussi introduit les opérateur += et-= a l'intérieur de la classe qui n'ont pas besoin de méthode dans leur définition. 
+
+[Question P7.1] En termes de POO, quelle est donc la nature de la méthode dessine_sur() ?
+
+[Question P8.1] A quoi faut-il faire attention pour les classes contenant des pointeurs ? Quelle(s) solution(s) est/sont
+envisageable(s) ?
