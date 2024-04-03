@@ -44,3 +44,5 @@ envisageable(s) ?
 [Question P8.2] Comment représentez vous la classe Systeme ?
 Expliquez votre conception (attributs, interface, ...).
 attributs: vector de particules et enceinte
+
+[Question P8.3] Comment empêchez-vous cela (copie et affectation) ?
