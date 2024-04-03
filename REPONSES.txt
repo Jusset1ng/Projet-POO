@@ -40,3 +40,7 @@ Finalement on a aussi introduit les opérateur += et-= a l'intérieur de la clas
 
 [Question P8.1] A quoi faut-il faire attention pour les classes contenant des pointeurs ? Quelle(s) solution(s) est/sont
 envisageable(s) ?
+
+[Question P8.2] Comment représentez vous la classe Systeme ?
+Expliquez votre conception (attributs, interface, ...).
+attributs: vector de particules et enceinte
