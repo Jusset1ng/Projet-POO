@@ -11,8 +11,8 @@ Nous avons aussi introduit et conservé les méthodes suivantes toutes en public
 -norme et morme2
 -unitaire 
 Elles nous sont nécessaires lors certaines définitions de surcharges d'opérateurs que nous avons mises en dehors de la classe et qui les utilisent.
-On a retiré 
--set_coord parceque nous la considèrons inutile après avoir introduit les constructeurs
+(!!!On a retiré 
+-set_coord parceque nous la considèrons inutile après avoir introduit les constructeurs) pas encore sur
 
 [Question P4.1] Avez-vous ajouté un constructeur de copie ? Pourquoi (justifiez votre choix) ?
 
