@@ -54,6 +54,8 @@ Nouvelle sous classe de Particules ici :Helium
 
 (Question :qu'elles classes sont dessinable et comment incoporer la redefinition de la méthode dans cest classe definie auparavant??)
 
+!!pas oublié de rajouter les destructeur: Toute classe doit en avoir un
+
 
 
 
