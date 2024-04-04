@@ -16,7 +16,7 @@ Elles nous sont nécessaires lors certaines définitions de surcharges d'opérat
 
 [Question P4.1] Avez-vous ajouté un constructeur de copie ? Pourquoi (justifiez votre choix) ?
 
-Oui, nous l'avons jugé plus sûr et efficace lorsque néccessaire.
+Oui, nous l'avons jugé plus sûr et efficace lorsque néccessaire. Il faudra cependant faire attention a bien appelée ce constructeur si on fait definit un constructeur par défaut dans une sous classse héritant de Vecteur3D.
 
 [Question P4.2] Si l'on souhaitait ajouter un constructeur par coordonnées sphériques (deux angles et une longueur),
   a] que cela impliquerait-il au niveau des attributs de la classe ?
