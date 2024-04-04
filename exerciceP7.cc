@@ -75,7 +75,7 @@ int main() {
 S.ajouter_particule(ptr1);
 S.ajouter_particule(ptr2);
 
-T.dessine(S);//devrait être S.dessine_sur(T); une fois la méthode dessine_sur mise dans les classes dessinables
+T.dessine(S);//devrait être S.dessine_sur(T); une fois la méthode dessine_sur mise dans les classes dessinables(question!!)
 
     return 0;
 }
