@@ -43,6 +43,8 @@ envisageable(s) ?
 
 [Question P8.2] Comment représentez vous la classe Systeme ?
 Expliquez votre conception (attributs, interface, ...).
-attributs: vector de particules et enceinte
+Nous la représentons avec en attributs : une Enceinte et un vector de pointeur sur des Particules.
+Les pointeurs sont utilisés pour obtenir la résolution dynamique des liesn et permettre lors de l'appel des methodes de chaque instance du tableau que ce soit la méthode de la sous classe qui soit appellée et pas celle de Particule.
+
 
 [Question P8.3] Comment empêchez-vous cela (copie et affectation) ?
