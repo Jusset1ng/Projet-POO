@@ -13,3 +13,13 @@ et setprecision mais cela ne me convient toujours pas car cela rajoute des 0 inu
 prochaine seance d'assistanat, aussi je me dis que cela vient peut être du compilateur car certain ont une précision d'origine de 6 ...
 
 Emmanuel:
+
+
+Difficulté à implémenter la classe dessinable dans le programme pour moi elle créé une dépendance cyclique entre les classes dessinables heriatntes qui ont besoin de
+SupportADessin dans la définitions de Dessine_sur et SupportADessin qui utilise les sousclasses de Dessinable dans ses méthodes Dessine.
+Je me doute que ce problème est solvable à l'aide de pointeur.
+Pour l'instant nous ne savons pas encore ou ranger  les classes SupportADessin, Textviwer qui sont encore dans les fichier ExerciceP7 et Systeme1
+Nous faisons attention à l'organisation et à la lisibilité de notre programme et avons décidé de mettre la classe Particule et toutes ses sous classes dans le fichier 
+Particule.
+
+ 
