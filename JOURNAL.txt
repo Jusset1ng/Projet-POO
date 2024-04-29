@@ -1,0 +1,43 @@
+
+
+
+
+
+
+
+Partie 4 : 
+
+Apres s'être réparti les taches (on a fait simple : une classe chacun) voici les observations que nous avons tiré de cette semaine:
+
+JUstin
+
+Il a fallu créer la classe Particule avec beaucoup d'attention, car celle-ci n'est en fait pas une sous classe de Vecteur3D car une particule n'est pas un vecteur, 
+en revanche ses instances le sont, ce à quoi je n'avais pas pensé immédiatement. La difficulté pour moi s'est ensuite surtout présenté sur la fonction affiche() 
+car j'avais totalement oublié l'existence de l'autre fonction affiche de la classe Vecteur3D qui permettait vraiment de faciliter le travail. 
+Pas de problème avec le makefile que j'ai modifié sans difficulté, en revanche le retour du main de testParticule.cc ne me convient pas: une masse avec 6 décimales 
+est assignée a la particule p1 mais après compilation je récupère une précision de 4. J'ai alors essayé de palier à ce problème en utilisant la bibliothèque <iomanip> 
+et setprecision mais cela ne me convient toujours pas car cela rajoute des 0 inutiles aux autres valeurs. A voir si je trouve la solution, sinon j'attendrais la 
+prochaine seance d'assistanat, aussi je me dis que cela vient peut être du compilateur car certain ont une précision d'origine de 6 ...
+
+Emmanuel 
+
+Pour la classe Enceinte. Nous l'avons pas encore jointe au programme et l'avons juste concu pour l'instant sur un fichier a part et attendons d'en savoir plus sur son utlisation pour
+l'incorporée de facon idéal dans un fichier du programme.
+
+Partie 5:
+
+Emmanuel
+
+Nous avons de la difficulté à implémenter la classe dessinable dans le programme pour moi elle créé une dépendance cyclique entre les classes héritantes de Dessinable  qui ont besoin de
+SupportADessin dans la définitions de Dessine_sur et SupportADessin qui utilise les sousclasses de Dessinable dans ses méthodes Dessine.
+Je me doute que ce problème est solvable à l'aide de pointeur.
+Pour l'instant nous ne savons pas encore ou ranger  les classes SupportADessin et Textviewer qui sont encore dans les fichier ExerciceP7 et Systeme1
+Nous arrivons à l'affichage rechercherché dans l'énoncé en utilisant les méthodes d'une instance de Textviewer cependant pas encore à travers la méthode dessine_sur comme souhaité.
+
+Justin
+
+Nous faisons attention à l'organisation et à la lisibilité de notre programme et avons décidé de réunir la classe Particule et toutes ses sous classes dans le fichier 
+Particule.
+Par ailleur pour éviter le copier-collé on a redefint les méthodes affiche des sousclasse de Particule en utilisant la méthode hérité de Particule.
+
+ 

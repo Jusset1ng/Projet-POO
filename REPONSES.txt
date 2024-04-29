@@ -1,11 +1,51 @@
 [Question P1.1] Comment représentez-vous ces vecteurs ? Comment sont-ils organisés : quels attributs ? quelles méthodes ? quels droits d'accès ?
 
+Nous avons choisi de représenter ces vecteurs à travers les 3 coordonnées cartésiennes mises en attributs avec droit d'accès en private afin de renforcer l'encapsulation.
+Nous avons aussi introduit et conservé les méthodes suivantes toutes en public afin qu'elles soient facilement utilisables:
+-affiche 
+-compare 
+-addition/soustraction 
+-oppose 
+-mult (multiplication par un scalaire)
+-prod_scal (entre deux vecteurs)
+-norme et morme2
+-unitaire 
+Elles nous sont nécessaires lors certaines définitions de surcharges d'opérateurs que nous avons mises en dehors de la classe et qui les utilisent.
+(!!!On a retiré 
+-set_coord parceque nous la considèrons inutile après avoir introduit les constructeurs) pas encore sur
 
 [Question P4.1] Avez-vous ajouté un constructeur de copie ? Pourquoi (justifiez votre choix) ?
 
+Oui, nous l'avons jugé plus sûr et efficace lorsque néccessaire. Il faudra cependant faire attention a bien appelée ce constructeur si on fait definit un constructeur par défaut dans une sous classse héritant de Vecteur3D.
+Finalement la classe ne contenant pas de pointeurs ce constructeur ne devrait pas poser problême.
 
 [Question P4.2] Si l'on souhaitait ajouter un constructeur par coordonnées sphériques (deux angles et une longueur),
   a] que cela impliquerait-il au niveau des attributs de la classe ?
+Si un tel constructeur est bien adapté et convertis avec précision les coordonnées recue en coordonnées cartiesiennes pour initialisé l'instance créée  alors rien ne devrait changé au niveau des attributs.
+
   b] quelle serait la difficulté majeure (voire l'impossibilité) de sa réalisation en C++ ? (C'est d'ailleurs pour cela qu'on ne vous demande pas de faire un tel constructeur !)
 
 [Question P4.3] Quels opérateurs avez vous introduits ?
+Nous avons introduit les opérateur suivant
+<< qui correspond à la méthode affiche.
+La définition de cet opérateur doit necéssairement être en dehors de la classe et requiert dans notre programme l'utilisation de la méthode affiche  
+== et != qui correspodent a la méthode compare 
++ et - l'addition/la soustraction
+* le produit scalaire
+^ le produit vectoriel
+~ le vecteur unitaire
+Nous avons decidé de mettre toutes les définitions de ces opérateurs en dehors de la classe parcequ'elles créent un nouvelle donnée en retour lorsqu'elles sont utilisées que ce soit un vecteur, un bool ou un double.
+Finalement on a aussi introduit les opérateur += et-= a l'intérieur de la classe qui n'ont pas besoin de méthode dans leur définition. 
+
+[Question P7.1] En termes de POO, quelle est donc la nature de la méthode dessine_sur() ?
+
+[Question P8.1] A quoi faut-il faire attention pour les classes contenant des pointeurs ? Quelle(s) solution(s) est/sont
+envisageable(s) ?
+
+[Question P8.2] Comment représentez vous la classe Systeme ?
+Expliquez votre conception (attributs, interface, ...).
+Nous la représentons avec en attributs : une Enceinte et un vector de pointeur sur des Particules.
+Les pointeurs sont utilisés pour obtenir la résolution dynamique des liesn et permettre lors de l'appel des methodes de chaque instance du tableau que ce soit la méthode de la sous classe qui soit appellée et pas celle de Particule.
+
+
+[Question P8.3] Comment empêchez-vous cela (copie et affectation) ?
