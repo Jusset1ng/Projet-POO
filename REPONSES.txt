@@ -49,3 +49,7 @@ Les pointeurs sont utilisés pour obtenir la résolution dynamique des liesn et 
 
 
 [Question P8.3] Comment empêchez-vous cela (copie et affectation) ?
+
+[Question P11.1] Si vous souhaitez voir l'enceinte, c.-à-d. la faire dessiner, comment devez vous modifier (ou pas)
+votre conception/votre code ?
+Pour rendre l'enceinte visible et pouvoir voir les particules à travers, il a fallu qu'on ajoute une composante de transparence/d'opacité dans nos couleur en modifiant les shaders. On a aussi modifié la méthode paintGl de Glwidget pour qu'elle prenne en compte ce nouveau facteur en rendant possible le mélange alpha permettant la transparence. Les couleurs sont désormais de la classe vec4 et auront une plus faible composante d'opacité les rendant ainsi plus transparente dans la méthode de dessinage d'une enceinte.
