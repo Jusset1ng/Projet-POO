@@ -56,8 +56,9 @@ Nouvelle sous classe de Particules ici :Helium
 
 !!pas oublié de rajouter les destructeur: Toute classe doit en avoir un
 
+ExerciceP11:
 
-
+Dans l'exercice P11; on a décidé de supprimer toutes les classes de l'exercicep10 pour l'adapter à notre projet: la classe contenu est remplacée par systeme dont on modifié la méthode dessine_sur pour qu'elle dessine d'abord l'enceinte puis ensuite sa collection de particules. On a supprimé la classe machin qui nous semblait ne pas etre utile étant donné qu' elle n'a pas d'équivalent dans notre projet. La classe bloc elle, est remplacée par Enceinte et Qui tourne,Dervish, Moucheron sont respectivement remplacées par Particule,Neon et Argon avec en plus simillairement a Argon et Neon la classe Helium. On a mis le pas de temps comme attribut de la méthode systeme et pour la représentation de chacunes desparticules et leur différentiation on a introduit les méthodes Dessinecube, DessineSphere et DesssinePyramide de VueOpenGl. Pour dessiner l'enceinte on a du modifié les shaders et la méthode PaintGl en ajoutant une composante alpha pour la transparence.
 
 
 
