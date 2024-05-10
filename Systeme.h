@@ -7,21 +7,26 @@
 #include "Particule.h"
 #include "GenerateurAleatoire.h"
 
+
 class Systeme :public Dessinable{
 	private:
     std::vector<std::unique_ptr<Particule> > particules;
     Enceinte E;
     GenerateurAleatoire tirage; //peut etre initialisé avec la meme graine pour debugger
     double Epsilon;
+    double temperature = 290;
+    static constexpr double R = 8.314472;
 
-    bool forcer = false; //Premier choc avec zenith à pi/2 et azimut a pi/3
+    bool forcer = false; //Si true: Premier choc avec zenith à pi/2 et azimut a pi/3
 
     public:
     Systeme() :  E (){}
     
     Systeme(double Eps) : Epsilon(Eps) {}
 
-    Systeme(double a, double b, double c, double Eps, unsigned int graine) :  E(a, b, c), tirage(graine), Epsilon(Eps) {}
+    Systeme(double a, double b, double c, double Eps) :  E(a, b, c), Epsilon(Eps) {}
+
+    void set_tirage(double graine){tirage = graine;}
 
     void set_forcage(bool b){forcer = b;}
 
@@ -36,6 +41,28 @@ class Systeme :public Dessinable{
     void dessine_sur(SupportADessin& support) override;
 
     void evolue(double dt);
+
+    void set_temperature(double t){if(t>0) temperature = t;}
+    
+    double position_rd(unsigned int coord){
+        switch(coord){
+        case 0:
+        return tirage.uniforme(0.0, E.get_largeur());//x
+        break;
+        case 1:
+        return tirage.uniforme(0.0, E.get_profondeur());//y
+        break;
+        case 2:
+        return tirage.uniforme(0.0, E.get_hauteur());//z
+        break;
+        default:
+        std::cout << "Erreur d'indexation" << std::endl;
+        return 0;
+        }
+    }
+    double vitesse_rd(double constante){
+        return tirage.gaussienne(0.0, sqrt(constante * temperature));
+    }
 
 };
 

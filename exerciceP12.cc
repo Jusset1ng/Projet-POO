@@ -5,9 +5,6 @@
 #include "Helium.h"
 using namespace std;
 
-
-	
-
 int main(){
 
 double Epsilon(1.0);
@@ -15,11 +12,13 @@ double Epsilon(1.0);
 Systeme S(20, 20, 20, Epsilon); // Enceinte de dim 20 de cote et de pas d'espace 1.
 Textviewer T(cout);
  
+Neon n(0);
+Argon a(0);
+Helium h(0);
 
-
-S.ajouter_particule(new Helium (1 ,1, 1, 0, 0, 0,4.002602));
-S.ajouter_particule(new Neon(1, 18.5, 1 ,0 ,0.2, 0 ,20.1797));
-S.ajouter_particule(new Argon (1, 1, 3.1 ,0, 0, -0.5,39.948));
+n.initialise_rd(10,10,S);//nb, masse, systeme
+a.initialise_rd(10,10,S);
+h.initialise_rd(10,10,S);
 
 S.set_forcage(true);
 

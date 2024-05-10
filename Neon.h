@@ -1,16 +1,26 @@
-#pragma once 
+#pragma once
 #include "Particule.h"
-
-
+#include "Systeme.h"
 
 class Neon : public Particule {
 public:
-    Neon(double a, double b, double c, double d, double e, double f, double g) :
-        Particule(a, b, c, d, e, f, g) {}
+    Neon(double x, double y, double z, double vx, double vy, double vz, double masse) :
+        Particule(x, y, z, vx, vy, vz, masse) {}
+
+    Neon(double masse) :
+    Particule(masse) {}
 
     std::ostream& affiche(std::ostream& sortie) const override ;
     
     void dessine_sur(SupportADessin& support) override ;
+
+    void vitesse_rd(double temperature, GenerateurAleatoire& tirage);
+
+    void initialise_rd(unsigned int nb_part, double masse, Systeme& s);
+
+private: 
+    static constexpr double M = 20.1797;
+
 
 };
 

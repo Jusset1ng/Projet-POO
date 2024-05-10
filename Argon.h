@@ -1,15 +1,24 @@
 #pragma once 
 #include "Particule.h"
+#include "Systeme.h"
 
 
 class Argon : public Particule {
 public:
-    Argon(double a, double b, double c, double d, double e, double f, double g) :
-        Particule(a, b, c, d, e, f, g) {}
+    Argon(double x, double y, double z, double vx, double vy, double vz, double masse) :
+        Particule(x, y, z, vx, vy, vz, masse) {}
+
+    Argon(double masse) :
+    Particule(masse) {}
 
     std::ostream& affiche(std::ostream& sortie) const override;
     
     void dessine_sur(SupportADessin& support) override ;
+
+    void initialise_rd(unsigned int nb_part, double masse, Systeme& s);
+
+private: 
+    static constexpr double M = 39.948;
 
 };
 
