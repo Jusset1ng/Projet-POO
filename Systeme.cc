@@ -41,7 +41,6 @@ void Systeme::evolue(double dt){//deplacement choc, rebond...
 
         for(size_t j(0); j < particules.size() && j!=i ; ++j){//test de choc entre toutes les pairs de particules, pavage sphérique, epsilon par defaut dans l'operateur ==
             if(particules[i]->test_position(particules[j], Epsilon)){ //il faut qu'elles aient la meme position mais pas que ce soit la meme particule
-                std::cout << "La particule " << j << " est candidat pour" << i << std::endl;
                 candidats.push_back(j);
             }
         }
