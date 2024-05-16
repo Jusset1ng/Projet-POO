@@ -29,7 +29,7 @@ unsigned int k(10);
 std::cout << "Lancement de la simulation" << endl;
 std::cout << "==========----------" << endl;
 for(int i(1); i <= k ; ++i){
-    S.evolue(0.1);
+    S.evolue(1);
 }
 cout << "etc.";
 return 0;

@@ -41,6 +41,7 @@ void Systeme::evolue(double dt){//deplacement choc, rebond...
 
         for(size_t j(0); j < particules.size() && j!=i ; ++j){//test de choc entre toutes les pairs de particules, pavage sphérique, epsilon par defaut dans l'operateur ==
             if(particules[i]->test_position(particules[j], Epsilon)){ //il faut qu'elles aient la meme position mais pas que ce soit la meme particule
+                std::cout << "La particule " << j << " est candidat pour" << i << std::endl;
                 candidats.push_back(j);
             }
         }
@@ -58,7 +59,7 @@ void Systeme::evolue(double dt){//deplacement choc, rebond...
             Vecteur3D v0;
             double L = particules[i]->calcule_L(vg);
             if(forcer){
-                v0 = Vecteur3D(0.5*L, 0.8663*L, 0);
+                v0 = Vecteur3D(0.5*L, std::sin((M_PI)/3)*L, 0);
                 forcer = false;
             }
             else{
@@ -85,6 +86,22 @@ void Systeme::evolue(double dt){//deplacement choc, rebond...
     }
     std::cout << "==========----------" << std::endl;
 }
+
+void Systeme::initialise_rd_neon(unsigned int nb_part, double masse){
+        Neon n(0);
+        n.initialise_rd(nb_part, masse, *this);
+    }
+
+void Systeme::initialise_rd_helium(unsigned int nb_part, double masse){
+        Helium h(0);
+        h.initialise_rd(nb_part, masse, *this);
+    }
+
+void Systeme::initialise_rd_argon(unsigned int nb_part, double masse){
+        Argon a(0);
+        a.initialise_rd(nb_part, masse, *this);
+    }
+
 
 //----------FONCTION----------
 

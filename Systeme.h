@@ -6,6 +6,9 @@
 #include "Enceinte.h"
 #include "Particule.h"
 #include "GenerateurAleatoire.h"
+#include "Neon.h"
+#include "Helium.h"
+#include "Argon.h"
 
 
 class Systeme :public Dessinable{
@@ -63,6 +66,12 @@ class Systeme :public Dessinable{
     double vitesse_rd(double constante){
         return tirage.gaussienne(0.0, sqrt(constante * temperature));
     }
+
+    void initialise_rd_neon(unsigned int nb_part, double masse);
+
+    void initialise_rd_helium(unsigned int nb_part, double masse);
+
+    void initialise_rd_argon(unsigned int nb_part, double masse);
 
 };
 

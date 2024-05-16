@@ -1,5 +1,5 @@
 
- #include <iostream>
+#include <iostream>
 #include "Vecteur3D.h"
 #include <cmath>
 using namespace std;
@@ -27,10 +27,14 @@ ostream& Vecteur3D::affiche(ostream& sortie)const {
 
 
 bool Vecteur3D::compare(Vecteur3D const& vect, double p = 1e-10) const{
-    if(( abs(vect.x - x) < p) and ( abs(vect.y - y) < p) and ( abs(vect.z - z) < p)) return true;
-	else return false;}	
-		
+    if((abs(vect.x - x) < p) and (abs(vect.y - y) < p) and (abs(vect.z - z) < p)) return true;
+	else return false;}
 
+bool Vecteur3D::compare2(Vecteur3D const& vect, double p = 1e-10) const{//pour le pavage cubique
+	if((floor(x)/p) == floor(vect.x/p) && (floor(y)/p) == floor(vect.y/p) && (floor(z)/p) == floor(vect.z/p)) return true;
+	else return false;
+
+}
 			
 Vecteur3D Vecteur3D::addition(const Vecteur3D& autre) const {
 		

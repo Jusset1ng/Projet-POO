@@ -14,8 +14,6 @@ public:
     
     void dessine_sur(SupportADessin& support) override ;
 
-    void vitesse_rd(double temperature, GenerateurAleatoire& tirage);
-
     void initialise_rd(unsigned int nb_part, double masse, Systeme& s);
 
 private: 

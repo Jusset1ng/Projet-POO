@@ -16,9 +16,9 @@ Neon n(0);
 Argon a(0);
 Helium h(0);
 
-n.initialise_rd(10,10,S);//nb, masse, systeme
-a.initialise_rd(10,10,S);
-h.initialise_rd(10,10,S);
+S.initialise_rd_neon(10,10);//nb, masse, systeme
+S.initialise_rd_helium(10,10);
+S.initialise_rd_argon(10,10);
 
 S.set_forcage(true);
 
