@@ -19,7 +19,7 @@ void Particule::dessine_sur(SupportADessin& support) {
 
 void Particule::evolue(double dt){
     //on deplace la particule de v dt:
-    pos += 10*v*dt;
+    pos += v*dt;
 }
 
 void Particule::choc_paroi(size_t i, double largeur, double hauteur, double profondeur){
@@ -59,7 +59,7 @@ void Particule::choc_paroi_n(size_t i, int n, double taille){
 }
 
 bool Particule::test_position(const std::unique_ptr<Particule>& autre, double Epsilon) const{
-    return pos.compare(autre->pos, Epsilon);
+    return pos.compare2(autre->pos, Epsilon);
 }
 
 Vecteur3D Particule::calcule_vg(const std::unique_ptr<Particule>& autre) const{

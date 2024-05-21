@@ -12,15 +12,14 @@ class Particule : public Dessinable {
     Vecteur3D pos;
     Vecteur3D v;
     double masse;
+
+    static constexpr double R = 8.314472;
+
     public:
-    
     Particule(double x, double y, double z, double vx, double vy, double vz, double masse)
     : pos(x, y, z), v(vx, vy, vz), masse(masse){}
     Particule(double masse)
     : pos(), v(), masse(masse){}
-    
-
-    Particule(const Particule& autre): pos(autre.pos), v(autre.v), masse(autre.masse) {}
 
     virtual ~Particule(){};
 
@@ -43,6 +42,7 @@ class Particule : public Dessinable {
     void choc_particule(std::unique_ptr<Particule>& autre, const Vecteur3D& vg, const Vecteur3D& v0);
 
     std::ostream& afficher_choc(size_t i, const std::unique_ptr<Particule>& autre) const;
+    
 };
 
 
