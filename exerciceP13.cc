@@ -11,11 +11,11 @@ double Epsilon(1.0);
 
 Systeme S(20, 20, 20, Epsilon); // Enceinte de dim 20 de cote et de pas d'espace 1.
 Textviewer T(cout);
- 
 
-S.initialise_rd_neon(10,10);//nb, masse
-S.initialise_rd_helium(10,10);
-S.initialise_rd_argon(10,10);
+
+S.initialise_rd_neon(10,4.002602);//nb, masse
+
+S.ajouter_particule(new Neon(1 ,1, 1, 0, 0, 0,4.002602, true));
 
 S.set_forcage(true);
 

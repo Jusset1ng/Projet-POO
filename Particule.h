@@ -12,14 +12,16 @@ class Particule : public Dessinable {
     Vecteur3D pos;
     Vecteur3D v;
     double masse;
+    bool trace;
+    std::vector<Vecteur3D> memoire;//ou faire une queue pour avoir une ligne qui s'efface au fur et a mesure
 
     static constexpr double R = 8.314472;
 
     public:
-    Particule(double x, double y, double z, double vx, double vy, double vz, double masse)
-    : pos(x, y, z), v(vx, vy, vz), masse(masse){}
-    Particule(double masse)
-    : pos(), v(), masse(masse){}
+    Particule(double x, double y, double z, double vx, double vy, double vz, double masse, bool trace = false)
+    : pos(x, y, z), v(vx, vy, vz), masse(masse), trace(trace) {}
+    Particule(double masse, bool trace = false)
+    : pos(), v(), masse(masse), trace(trace) {}
 
     virtual ~Particule(){};
 

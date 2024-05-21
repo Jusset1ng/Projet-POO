@@ -4,11 +4,11 @@
 
 class Helium : public Particule {
 public:
-    Helium(double x, double y, double z, double vx, double vy, double vz, double masse) :
-        Particule(x, y, z, vx, vy, vz, masse) {}
+    Helium(double x, double y, double z, double vx, double vy, double vz, double masse, bool trace = false) :
+        Particule(x, y, z, vx, vy, vz, masse, trace) {}
 
-    Helium(double masse) :
-    Particule(masse) {}
+    Helium(double masse,  bool trace = false) :
+    Particule(masse, trace) {}
 
     std::ostream& affiche(std::ostream& sortie) const override;
         

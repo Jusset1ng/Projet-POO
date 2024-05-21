@@ -47,25 +47,9 @@ class Systeme :public Dessinable{
 
     void set_temperature(double t){if(t>0) temperature = t;}
     
-    double position_rd(unsigned int coord){
-        switch(coord){
-        case 0:
-        return tirage.uniforme(0.0, E.get_largeur());//x
-        break;
-        case 1:
-        return tirage.uniforme(0.0, E.get_profondeur());//y
-        break;
-        case 2:
-        return tirage.uniforme(0.0, E.get_hauteur());//z
-        break;
-        default:
-        std::cout << "Erreur d'indexation" << std::endl;
-        return 0;
-        }
-    }
-    double vitesse_rd(double constante){
-        return tirage.gaussienne(0.0, sqrt(constante * temperature));
-    }
+    double position_rd(unsigned int coord);
+
+    double vitesse_rd(double constante);
 
     void initialise_rd_neon(unsigned int nb_part, double masse);
 

@@ -86,6 +86,27 @@ void Systeme::evolue(double dt){//deplacement choc, rebond...
     std::cout << "==========----------" << std::endl;
 }
 
+double Systeme::position_rd(unsigned int coord){
+        switch(coord){
+        case 0:
+        return tirage.uniforme(0.0, E.get_largeur());//x
+        break;
+        case 1:
+        return tirage.uniforme(0.0, E.get_profondeur());//y
+        break;
+        case 2:
+        return tirage.uniforme(0.0, E.get_hauteur());//z
+        break;
+        default:
+        std::cout << "Erreur d'indexation" << std::endl;
+        return 0;
+        }
+    }
+
+double Systeme::vitesse_rd(double constante){
+    return tirage.gaussienne(0.0, sqrt(constante * temperature));
+}
+
 void Systeme::initialise_rd_neon(unsigned int nb_part, double masse){
         Neon n(0);
         n.initialise_rd(nb_part, masse, *this);

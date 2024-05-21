@@ -19,7 +19,11 @@ void Particule::dessine_sur(SupportADessin& support) {
 
 void Particule::evolue(double dt){
     //on deplace la particule de v dt:
+    if(trace){
+        memoire.push_back(pos);
+    }
     pos += v*dt;
+    
 }
 
 void Particule::choc_paroi(size_t i, double largeur, double hauteur, double profondeur){
