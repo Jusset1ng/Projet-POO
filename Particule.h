@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <memory>
+#include <deque>
 #include "Vecteur3D.h"
 #include "Dessinable.h"
 
@@ -13,7 +14,7 @@ class Particule : public Dessinable {
     Vecteur3D v;
     double masse;
     bool trace;
-    std::vector<Vecteur3D> memoire;//ou faire une queue pour avoir une ligne qui s'efface au fur et a mesure
+    std::deque<Vecteur3D> memoire;//ou faire une queue pour avoir une ligne qui s'efface au fur et a mesure
 
     static constexpr double R = 8.314472;
 

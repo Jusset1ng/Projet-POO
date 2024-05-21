@@ -20,7 +20,9 @@ void Particule::dessine_sur(SupportADessin& support) {
 void Particule::evolue(double dt){
     //on deplace la particule de v dt:
     if(trace){
-        memoire.push_back(pos);
+        memoire.push_front(pos);
+        if(memoire.size() == 20)
+            memoire.pop_back();
     }
     pos += v*dt;
     
