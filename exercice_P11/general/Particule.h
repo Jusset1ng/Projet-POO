@@ -4,6 +4,7 @@
 #include <memory>
 #include "Vecteur3D.h"
 #include "Dessinable.h"
+#include "Enceinte.h"
 #include <deque>
 
 
@@ -14,7 +15,15 @@ class Particule : public Dessinable {
     Vecteur3D v;
     double masse;
     bool trace;
+    double comptechocparois;
+    int coordchocparoi;
+    double vitessenormalechocparoi;
         std::deque<Vecteur3D> memoire;
+
+          static constexpr double R = 8.314472;
+          static constexpr double A_to_cm = 1;
+
+
     public:
     
         Particule(double x, double y, double z, double vx, double vy, double vz, double masse, bool trace = false)
@@ -37,6 +46,8 @@ class Particule : public Dessinable {
 
     void evolue(double dt);
 
+    void evolue(double dt, size_t i, Enceinte& E);
+
     void choc_paroi(size_t i, double largeur, double hauteur, double profondeur);
 
     void choc_paroi_n(size_t i, int n, double taille);
@@ -54,6 +65,21 @@ class Particule : public Dessinable {
     double get_infos(int n) const;
 
     Vecteur3D get_vitesse() const{return v;}
+
+    double get_comptechocparois() {return comptechocparois;}
+
+    void reset_comptechocparois(){comptechocparois=0;}
+
+    void updatevitessenormalechocparoi(){if(coordchocparoi==0){vitessenormalechocparoi=v.get_coord(0);}
+                                        if(coordchocparoi==1){vitessenormalechocparoi=v.get_coord(1);}
+                                       if(coordchocparoi==2){vitessenormalechocparoi=v.get_coord(2);}
+                                        if(coordchocparoi==3){vitessenormalechocparoi=0;}}
+
+    double get_vitessenormalechocparoi(){return vitessenormalechocparoi;}
+
+    void reset_vitessenormalechocparoi(){vitessenormalechocparoi=0;}
+
+
 };
 
 

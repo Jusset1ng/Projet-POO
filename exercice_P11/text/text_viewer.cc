@@ -13,3 +13,4 @@ void TextViewer:: dessine(Particule const& P){ flot << P << std::endl;}
     void TextViewer:: dessine(Helium const& N) { flot << N << std::endl;}
     void TextViewer::dessine(Enceinte const& E) {flot <<E << std::endl;}
     void TextViewer::dessine(Systeme const& S) {flot << S<< std::endl;}
+

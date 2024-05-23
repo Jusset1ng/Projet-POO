@@ -5,6 +5,7 @@
 #include <QOpenGLFunctions>
 #include <QPainter>
 #include <QFont>
+#include <cmath>
 #include "vue_opengl.h"
 #include "Systeme.h"
 #include "Enceinte.h"

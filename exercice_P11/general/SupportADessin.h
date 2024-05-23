@@ -18,6 +18,7 @@ public:
     virtual void dessine(Helium const&) = 0;
     virtual void dessine(Enceinte const&) = 0;
     virtual void dessine(Systeme const&) = 0;
+
     // Autres éléments que vous souhaitez dessiner
 };
 

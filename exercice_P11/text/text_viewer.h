@@ -27,6 +27,7 @@ void dessine(Argon const& a_dessiner) override;
 void dessine(Helium const& a_dessiner) override;
 void dessine(Enceinte const& E) override;
 void dessine(Systeme const& S) override;
+
 private:
   std::ostream& flot;
 };

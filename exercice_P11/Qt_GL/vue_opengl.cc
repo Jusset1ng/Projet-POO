@@ -17,7 +17,7 @@ void VueOpenGL::dessine(Enceinte const& a_dessiner)
   matrice.setToIdentity();
  matrice.translate(10,10,10);
  matrice.scale(10);
- matrice.rotate(.0, 0.0, 0.0, 0.0);
+ matrice.rotate(0.0, 0.0, 0.0, 0.0);
   dessineEnceinte(matrice);
 }
 
@@ -26,31 +26,35 @@ void VueOpenGL:: dessine(Neon const&  a_dessiner){
 QMatrix4x4 matrice;
   matrice.setToIdentity();
   matrice.translate(a_dessiner.get_infos(0), a_dessiner.get_infos(1), a_dessiner.get_infos(2));
-  matrice.scale(0.5);
+  matrice.scale(0.3);
   matrice.rotate(0.0, 0.0, 0.0, 0.0);
   dessineCube(matrice);
-if (a_dessiner.get_trace()==true){
-  glBegin(GL_LINE_STRIP);
-  for (auto const& point : a_dessiner.get_memoire()) {
-  glVertex3f(point.get_coord(0), point.get_coord(1), point.get_coord(2));
-  }
-  glEnd();}
+  QMatrix4x4 matrice1;
+  matrice1.setToIdentity();
+if (a_dessiner.get_trace()==true){dessinetrace(a_dessiner,matrice1);}
 }
 
+
+void VueOpenGL::dessinetrace(Particule const& a_dessiner,QMatrix4x4 const& point_de_vue)
+{prog.setUniformValue("vue_modele", matrice_vue * point_de_vue);
+    glBegin(GL_LINE_STRIP);
+    for (auto const& point : a_dessiner.get_memoire()) {
+    glVertex3f(point.get_coord(0), point.get_coord(1), point.get_coord(2));
+    }
+    glEnd();
+
+}
 void VueOpenGL:: dessine(Argon const& a_dessiner){
   // Dessine le 4e cube
     QMatrix4x4 matrice;
   matrice.setToIdentity();
   matrice.rotate(0.0, 0.0, 0.0, 0.0);
   matrice.translate(a_dessiner.get_infos(0), a_dessiner.get_infos(1), a_dessiner.get_infos(2));
-  matrice.scale(0.5);
+  matrice.scale(0.3);
   dessinePyramide(matrice);
-  if (a_dessiner.get_trace()==true){
-    glBegin(GL_LINE_STRIP);
-    for (auto const& point : a_dessiner.get_memoire()) {
-    glVertex3f(point.get_coord(0), point.get_coord(1), point.get_coord(2));
-    }
-    glEnd();}
+  QMatrix4x4 matrice1;
+  matrice1.setToIdentity();
+if (a_dessiner.get_trace()==true){dessinetrace(a_dessiner,matrice1);}
 }
 
 void VueOpenGL:: dessine(Helium const& a_dessiner){
@@ -58,16 +62,14 @@ void VueOpenGL:: dessine(Helium const& a_dessiner){
     QMatrix4x4 matrice;
     matrice.setToIdentity();
     matrice.translate(a_dessiner.get_infos(0), a_dessiner.get_infos(1),a_dessiner.get_infos(2));
-    matrice.scale(0.5);
+    matrice.scale(0.3);
     matrice.rotate(0.0, 0.0, 0.0, 0.0);
     dessineSphere(matrice);
+    QMatrix4x4 matrice1;
+    matrice1.setToIdentity();
+if (a_dessiner.get_trace()==true){dessinetrace(a_dessiner,matrice1);}
+    }
 
-    if (a_dessiner.get_trace()==true){
-      glBegin(GL_LINE_STRIP);
-      for (auto const& point : a_dessiner.get_memoire()) {
-      glVertex3f(point.get_coord(0), point.get_coord(1), point.get_coord(2));
-      }
-      glEnd();}}
 
 void VueOpenGL:: dessine(Particule const& a_dessiner) {}
 void VueOpenGL:: dessine(Systeme const& a_dessiner) {}
@@ -284,57 +286,40 @@ void VueOpenGL::dessineSphere(QMatrix4x4 const& point_de_vue)
 
 void VueOpenGL::dessineEnceinte(QMatrix4x4 const& point_de_vue)
 {
-
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     prog.setUniformValue("vue_modele", matrice_vue * point_de_vue);
 
+    glBegin(GL_LINES);
 
-    glBegin(GL_QUADS);
+    // Set line color to white for visibility
+    prog.setAttributeValue(CouleurId, 1.0, 1.0, 1.0, 1.0); // white
 
-    // face coté X = -1
-    prog.setAttributeValue(CouleurId, 0.0, 1.0, 0.0,0.2); // vert
-    prog.setAttributeValue(SommetId, -1.0, -1.0, -1.0);
-    prog.setAttributeValue(SommetId, -1.0, -1.0, +1.0);
-    prog.setAttributeValue(SommetId, -1.0, +1.0, +1.0);
-    prog.setAttributeValue(SommetId, -1.0, +1.0, -1.0);
+    // Define vertices for the enclosure
+    GLfloat vertices[8][3] = {
+        {-1.0, -1.0, -1.0},
+        {-1.0, -1.0,  1.0},
+        {-1.0,  1.0, -1.0},
+        {-1.0,  1.0,  1.0},
+        { 1.0, -1.0, -1.0},
+        { 1.0, -1.0,  1.0},
+        { 1.0,  1.0, -1.0},
+        { 1.0,  1.0,  1.0}
+    };
 
-    // face coté Y = +1
-    prog.setAttributeValue(CouleurId, 0.0, 0.0, 1.0,0.2); // bleu
-    prog.setAttributeValue(SommetId, -1.0, +1.0, -1.0);
-    prog.setAttributeValue(SommetId, -1.0, +1.0, +1.0);
-    prog.setAttributeValue(SommetId, +1.0, +1.0, +1.0);
-    prog.setAttributeValue(SommetId, +1.0, +1.0, -1.0);
+    // Define the edges of the enclosure
+    GLint edges[12][2] = {
+        {0, 1}, {1, 3}, {3, 2}, {2, 0}, // edges around X = -1
+        {4, 5}, {5, 7}, {7, 6}, {6, 4}, // edges around X = +1
+        {0, 4}, {1, 5}, {2, 6}, {3, 7}  // connecting edges between X = -1 and X = +1
+    };
 
-    // face coté Y = -1
-    prog.setAttributeValue(CouleurId, 0.0, 1.0, 1.0,0.2); // cyan
-    prog.setAttributeValue(SommetId, -1.0, -1.0, -1.0);
-    prog.setAttributeValue(SommetId, +1.0, -1.0, -1.0);
-    prog.setAttributeValue(SommetId, +1.0, -1.0, +1.0);
-    prog.setAttributeValue(SommetId, -1.0, -1.0, +1.0);
+    // Draw the edges
+    for (int i = 0; i < 12; ++i) {
+        prog.setAttributeValue(SommetId, vertices[edges[i][0]][0], vertices[edges[i][0]][1], vertices[edges[i][0]][2]);
+        prog.setAttributeValue(SommetId, vertices[edges[i][1]][0], vertices[edges[i][1]][1], vertices[edges[i][1]][2]);
+    }
 
-    // face coté Z = +1
-    prog.setAttributeValue(CouleurId, 1.0, 1.0, 0.0,0.2); // jaune
-    prog.setAttributeValue(SommetId, -1.0, -1.0, +1.0);
-    prog.setAttributeValue(SommetId, +1.0, -1.0, +1.0);
-    prog.setAttributeValue(SommetId, +1.0, +1.0, +1.0);
-    prog.setAttributeValue(SommetId, -1.0, +1.0, +1.0);
-
-    // face coté Z = -1
-    prog.setAttributeValue(CouleurId, 1.0, 0.0, 1.0,0.2); // magenta
-    prog.setAttributeValue(SommetId, -1.0, -1.0, -1.0);
-    prog.setAttributeValue(SommetId, -1.0, +1.0, -1.0);
-    prog.setAttributeValue(SommetId, +1.0, +1.0, -1.0);
-    prog.setAttributeValue(SommetId, +1.0, -1.0, -1.0);
-
-    // face coté X = +1
-    prog.setAttributeValue(CouleurId, 1.0, 0.0, 0.0,0.2); // rouge
-    prog.setAttributeValue(SommetId, +1.0, -1.0, -1.0);
-    prog.setAttributeValue(SommetId, +1.0, +1.0, -1.0);
-    prog.setAttributeValue(SommetId, +1.0, +1.0, +1.0);
-    prog.setAttributeValue(SommetId, +1.0, -1.0, +1.0);
-
-    glEnd();}
-
-
+    glEnd();
+}

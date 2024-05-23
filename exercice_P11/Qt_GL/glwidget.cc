@@ -2,7 +2,12 @@
 #include <QTimerEvent>
 #include <QMatrix4x4>
 #include "glwidget.h"
-
+#include "Particule.h"
+#include "Neon.h"
+#include "Argon.h"
+#include "Helium.h"
+#include "Enceinte.h"
+#include "Systeme.h"
 // ======================================================================
 void GLWidget::initializeGL()
 {
@@ -16,10 +21,17 @@ GLWidget::GLWidget(QWidget* parent)
   { chronometre.restart();
 c.set_enceinte(Enceinte(20,20,20));
 c.set_epsilon(1.0);
-      c.ajouter_particule(new Helium(1 ,1, 1,0, 0, 0,4.002602));
-      c.ajouter_particule(new Neon(1, 18.5, 1 ,0 ,0.2, 0 ,20.1797));
-      c .ajouter_particule(new Argon(1, 1, 3.1 ,0, 0, -0.5,39.948));
-      c.set_forcage(true);
+//c.ajouter_particule(new Helium(1 ,1, 1,0, 0, 0,4.002602,true));
+//c.ajouter_particule(new Neon(1, 18.5, 1 ,0 ,0.2, 0 ,20.1797,true));
+c .ajouter_particule(new Argon(1, 1, 3.1 ,0, 0, -0.5,39.948,true));
+
+c.initialise_rd_neon(100,10);
+c.initialise_rd_helium(100,10);
+c.initialise_rd_argon(100,10);
+
+c.set_forcage(true);
+
+
 	   }
 // ======================================================================
 void GLWidget::resizeGL(int width, int height)

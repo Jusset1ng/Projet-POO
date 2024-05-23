@@ -19,6 +19,7 @@ void dessine(Argon const& a_dessiner) override;
 void dessine(Helium const& a_dessiner) override;
 void dessine(Particule const& a_dessiner) override;
 void dessine(Systeme const& a_dessiner) override;
+
   // méthodes de (ré-)initialisation
   void init();
   void initializePosition();
@@ -36,7 +37,7 @@ void dessine(Systeme const& a_dessiner) override;
   void dessinePyramide(QMatrix4x4 const& point_de_vue = QMatrix4x4());
   void dessineSphere(QMatrix4x4 const& point_de_vue = QMatrix4x4());
   void dessineEnceinte(QMatrix4x4 const& point_de_vue = QMatrix4x4());
-
+ void dessinetrace(Particule const& a_dessiner,QMatrix4x4 const& point_de_vue=QMatrix4x4());
  private:
   // Un shader OpenGL encapsulé dans une classe Qt
   QOpenGLShaderProgram prog;

@@ -3,6 +3,7 @@
 #include <QMatrix4x4>
 #include "glwidgetdeux.h"
 
+
 // ======================================================================
 void GLWidgetdeux::initializeGL()
 {
@@ -17,9 +18,14 @@ GLWidgetdeux::GLWidgetdeux(QWidget* parent)
     chronometre.restart();
 c.set_enceinte(Enceinte(20,20,20));
 c.set_epsilon(1.0);
-      c.ajouter_particule(new Helium(1 ,1, 1,0, 0, 0,4.002602));
-      c.ajouter_particule(new Neon(1, 18.5, 1 ,0 ,0.2, 0 ,20.1797));
+      //c.ajouter_particule(new Helium(1 ,1, 1,0, 0, 0,4.002602));
+      //c.ajouter_particule(new Neon(1, 18.5, 1 ,0 ,0.2, 0 ,20.1797));
       c .ajouter_particule(new Argon(1, 1, 3.1 ,0, 0, -0.5,39.948));
+
+      c.initialise_rd_neon(1000,10);
+      c.initialise_rd_helium(1000,10);
+      c.initialise_rd_argon(100,10);
+
       c.set_forcage(true);
        }
 // ======================================================================
@@ -67,11 +73,20 @@ void GLWidgetdeux::paintGL()
         painter.setPen(Qt::white);
 
         // Dessiner avec QPainter
+
+
+
         QFont font("Arial", 12);
         painter.setFont(font);
-        QString text = " L'energie cinetique moyenne est : " + QString::number(c.calculer_Ecin());
-        painter.drawText(20, 40, text);
+        QString text = " L'energie cinetique moyenne est : " + QString::number(c.get_Ecin())+"[J]";
+        QString text1 = " Le nombre actuel de chocs avec les parois est " + QString::number(c.get_comptechocparois());
+        QString text2 = " La pression actuelle est  " + QString::number(c.get_pression())+" [Pa]";
+       QString text3 = " La loi des gaz parfait est:  " + QString::number(c.calculer_pression()*(1/c.calculer_Ecin()));
 
+        painter.drawText(20, 40, text);
+        painter.drawText(20, 80, text1);
+        painter.drawText(20, 120, text2);
+        painter.drawText(20, 160, text3);
         // Réactiver OpenGL
         glEnable(GL_DEPTH_TEST); // Réactiver le test de profondeur
         glMatrixMode(GL_PROJECTION);

@@ -7,7 +7,7 @@ QMAKE_CXXFLAGS += -std=c++17
 win32:LIBS += -lopengl32
 
 
-TARGET = ex_05_gl
+TARGET = ex_p11_gl
 
 LIBS += -L../general -lgeneral
 PRE_TARGETDEPS += ../general/libgeneral.a
