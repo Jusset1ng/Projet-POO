@@ -9,7 +9,7 @@ public:
         Particule(x, y, z, vx, vy, vz, masse, trace) {}
 
     Argon(double masse, bool trace = false) :
-    Particule(masse, trace) {}
+        Particule(masse, trace) {}
 
     std::ostream& affiche(std::ostream& sortie) const override;
     

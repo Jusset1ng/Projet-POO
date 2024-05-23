@@ -3,6 +3,8 @@
 #include <vector>
 #include <memory>
 #include <deque>
+#include <algorithm>
+#include "Enceinte.h"
 #include "Vecteur3D.h"
 #include "Dessinable.h"
 
@@ -18,6 +20,9 @@ class Particule : public Dessinable {
 
     static constexpr double R = 8.314472;
 
+    static constexpr double A_to_cm = 1;
+
+
     public:
     Particule(double x, double y, double z, double vx, double vy, double vz, double masse, bool trace = false)
     : pos(x, y, z), v(vx, vy, vz), masse(masse), trace(trace) {}
@@ -31,6 +36,8 @@ class Particule : public Dessinable {
     void dessine_sur(SupportADessin& support) override;
 
     void evolue(double dt);
+
+    void evolue(double dt, size_t i, Enceinte& E);
 
     void choc_paroi(size_t i, double largeur, double hauteur, double profondeur);
 
@@ -55,5 +62,3 @@ std::ostream& operator<<(std::ostream& sortie, const Particule& p);
 
 
 
-
-	

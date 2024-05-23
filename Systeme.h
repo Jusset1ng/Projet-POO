@@ -43,8 +43,14 @@ class Systeme :public Dessinable{
 
     void dessine_sur(SupportADessin& support) override;
 
+    void evolue_choc(size_t p1, size_t p2);
+
+    void affiche_systeme() const;
+
     void evolue(double dt);
 
+    void evolue2(double dt);
+    
     void set_temperature(double t){if(t>0) temperature = t;}
     
     double position_rd(unsigned int coord);
@@ -61,6 +67,6 @@ class Systeme :public Dessinable{
 
 std::ostream& operator<<(std::ostream& sortie, const Systeme& S) ;
     
- 
+
 
 

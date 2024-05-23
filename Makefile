@@ -10,7 +10,7 @@ CXXFLAGS += -pedantic -Wall         # pour les purs et durs
 # CXXFLAGS += -g                    # pour debugger
 # CXXFLAGS += -O2                   # pour optimiser la vitesse
 
-all: testVecteur3D testParticule testsysteme1 exerciceP7 exerciceP9 exerciceP12
+all: testVecteur3D testParticule testsysteme1 exerciceP7 exerciceP9 exerciceP12 exerciceP13
 
 Vecteur3D.o: Vecteur3D.cc Vecteur3D.h
 
@@ -24,11 +24,11 @@ TextViewer.o : TextViewer.h SupportADessin.h
 
 Dessinable.o: Dessinable.h TextViewer.h
 
-Particule.o: Particule.cc Particule.h Vecteur3D.h Dessinable.h
+Particule.o: Particule.cc Particule.h Vecteur3D.h Dessinable.h Enceinte.h
 
 testParticule.o: testParticule.cc Particule.h  
 
-testParticule: testParticule.o Particule.o Vecteur3D.o 
+testParticule: testParticule.o Particule.o Vecteur3D.o Enceinte.o
 
 Neon.o :Neon.cc Neon.h Particule.h 
 
@@ -57,3 +57,8 @@ exerciceP9: exerciceP9.o Systeme.o Particule.o Enceinte.o Neon.o Argon.o Helium.
 exerciceP12.o: exerciceP12.cc Systeme.h Neon.h Argon.h Helium.h
 
 exerciceP12: exerciceP12.o Systeme.o Particule.o Enceinte.o Neon.o Argon.o Helium.o Vecteur3D.o
+
+exerciceP13.o : exerciceP13.cc Systeme.h Neon.h Argon.h Helium.h
+
+exerciceP13: exerciceP13.o Systeme.o Particule.o Enceinte.o Neon.o Argon.o Helium.o Vecteur3D.o
+

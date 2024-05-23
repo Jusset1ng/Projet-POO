@@ -13,14 +13,14 @@ Systeme S(20, 20, 20, Epsilon); // Enceinte de dim 20 de cote et de pas d'espace
 Textviewer T(cout);
  
 
-S.initialise_rd_neon(10,10);//nb, masse
-S.initialise_rd_helium(10,10);
-S.initialise_rd_argon(10,10);
+S.initialise_rd_neon(5,10);//nb, masse
+//S.initialise_rd_helium(10,10);
+//S.initialise_rd_argon(10,10);
 
 S.set_forcage(true);
 
 S.dessine_sur(T);
-unsigned int k(10);
+unsigned int k(3);
 
 std::cout << "Lancement de la simulation" << endl;
 std::cout << "==========----------" << endl;
