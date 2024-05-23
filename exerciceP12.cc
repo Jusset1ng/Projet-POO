@@ -14,8 +14,8 @@ Textviewer T(cout);
  
 
 S.initialise_rd_neon(5,10);//nb, masse
-//S.initialise_rd_helium(10,10);
-//S.initialise_rd_argon(10,10);
+S.initialise_rd_helium(10,10);
+S.initialise_rd_argon(10,10);
 
 S.set_forcage(true);
 
