@@ -5,11 +5,8 @@
 //--------METHODES--------
 
 std::ostream& Particule::affiche(std::ostream& sortie) const{
-    sortie << "pos : ";
-    pos.affiche(sortie);
-    sortie << " ; v : ";
-    v.affiche(sortie);
-    sortie << " ; m : " << masse << std::endl;
+    sortie <<std::setprecision(6) << "pos : " << pos << " ; v : " << v << " ; m ";
+    std::cout << std::setprecision(7) << masse << std::endl;
     return sortie;
 }
 
@@ -19,13 +16,50 @@ void Particule::dessine_sur(SupportADessin& support) {
 
 void Particule::evolue(double dt){
     //on deplace la particule de v dt:
-    pos += 10*v*dt;
+    if(trace){
+        memoire.push_front(pos);
+        if(memoire.size() == 20)
+            memoire.pop_back();
+    }
+    pos += v*dt;
+    
 }
 
+void Particule::evolue(double dt, size_t i, Enceinte& E){//surcharge de evolue: methode avec decoupage de l'enceinte (P14)
+
+    size_t X = floor(this->pos.get_coord(0) * A_to_cm);
+    size_t Y = floor(this->pos.get_coord(1) * A_to_cm);
+    size_t Z = floor(this->pos.get_coord(2) * A_to_cm);
+
+    E.efface_particule(i, X, Y, Z);//on supprime l'index de la particule dans la case courante
+    
+
+    if(trace){
+        memoire.push_front(pos);
+        if(memoire.size() == 20)
+            memoire.pop_back();
+    }
+
+    pos += v*dt;
+
+    this->choc_paroi(i, E.get_largeur(), E.get_profondeur(), E.get_hauteur()); //je reteste les chocs contre les parois pour ne pas ajouter de mauvais indices dans le tableau.ie si la particule est sortie de l'enceinte entre temps
+
+    X = floor(this->pos.get_coord(0) * A_to_cm);
+    Y = floor(this->pos.get_coord(1) * A_to_cm);
+    Z = floor(this->pos.get_coord(2) * A_to_cm);
+    //std::cout << "J'ajoute la nouvelle position : " << X << " " << Y << " " << Z << std::endl;
+    E.ajoute_index(i, X, Y, Z); //on ajoute l'index de la particule dans sa nouvelle case
+    
+}
 void Particule::choc_paroi(size_t i, double largeur, double hauteur, double profondeur){
+    while(pos.get_coord(0) < 0 or pos.get_coord(0) > largeur or pos.get_coord(1) < 0 or pos.get_coord(1) > hauteur 
+            or pos.get_coord(2) < 0 or pos.get_coord(2) > profondeur){
+
+
     choc_paroi_n(i, 0, largeur);
     choc_paroi_n(i, 1, hauteur);
     choc_paroi_n(i, 2, profondeur);
+    }
 }
 void Particule::choc_paroi_n(size_t i, int n, double taille){
     if(pos.get_coord(n) < 0 or pos.get_coord(n) > taille){//pour eviter la copie et n'écrire qu'une fois l'inversion de la direction de la vitesse
@@ -59,7 +93,7 @@ void Particule::choc_paroi_n(size_t i, int n, double taille){
 }
 
 bool Particule::test_position(const std::unique_ptr<Particule>& autre, double Epsilon) const{
-    return pos.compare(autre->pos, Epsilon);
+    return pos.compare2(autre->pos, Epsilon);
 }
 
 Vecteur3D Particule::calcule_vg(const std::unique_ptr<Particule>& autre) const{

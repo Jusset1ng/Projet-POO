@@ -22,7 +22,9 @@ class Vecteur3D {
 	std::ostream& affiche(std::ostream& sortie)const;
 
     bool compare(Vecteur3D const& vect, double p ) const;
-			
+
+	bool compare2(Vecteur3D const& vect, double p ) const;//pavage cubique
+	
 	Vecteur3D addition(const Vecteur3D& autre) const;
 		
 	Vecteur3D soustraction(const Vecteur3D& autre) const;

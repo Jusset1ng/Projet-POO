@@ -7,7 +7,6 @@ class Argon;
 class Enceinte;
 class Systeme;
 
-
 class SupportADessin {
 public:
     virtual ~SupportADessin() = default;

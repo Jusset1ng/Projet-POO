@@ -1,3 +1,105 @@
+# PROGRESSION
+
+Format : [fait/à faire] TACHE	Durée (en minutes; remplacer les ??)
+
+Vous pouvez ajouter vos propres tâches si vous le jugez utile
+(p.ex. décomposition plus fine).
+
+[V] créer le JOURNAL                                    	 1
+[ ] lire complètement le descriptif général                  	??
+[ ] s'inscrire en binôme                                      	??
+[ ] fusionner les deux projets (y compris les fichiers JOURNAL)	??
+[ ] Makefile                                               	??
+[ ] Vecteur finis (pleinement opérationnels et testés)  	??
+[ ] fichier REPONSES                                         	??
+[ ] Particules simples                                         	??
+[ ] Enceintes                                           	??
+[ ] Dessinable + SupportADessin                                	??
+[ ] System                                                	??
+[ ] exerciceP9 (simulation textuelle)                         	??
+[ ] Graphisme : cadre général (reprise des exemples tuto)    	??
+[ ] Graphisme : adaptation à ce projet spécifique               ??
+[ ] Amélioration du modèle                                     	??
+[ ] Mouvement brownien                                     	??
+[ ] Collisions avancées                                     	??
+[ ] fichier CONCEPTION                                         	??
+[ ] fichier README                                        	??
+[ ] fichier NOMS                                        	??
+
+======================================================================
+# A FAIRE (PROCHAINE ETAPE)
+
+Mettez ici ce que vous pensez devoir être la ou les 2 prochaines étapes
+pour chacun. Par exemple :
+
+Ron: debugger les Vecteurs
+Hermione: finir le reste du projet
+
+======================================================================
+# SUIVI
+
+## Semaine 2 :
+
+décrire ici ce que vous avez fait en semaine 2
+
+--------------------------------------------------
+## Semaine 3 :
+
+
+
+--------------------------------------------------
+## Semaine 4 :
+
+
+
+--------------------------------------------------
+## Semaine 5 :
+
+
+
+--------------------------------------------------
+## Semaine 6 :
+
+
+
+--------------------------------------------------
+## Semaine 7 :
+
+
+
+--------------------------------------------------
+## Semaine 8 :
+
+
+
+--------------------------------------------------
+## Semaine 9 :
+
+
+
+--------------------------------------------------
+## Semaine 10 :
+
+
+
+--------------------------------------------------
+## Semaine 11 :
+
+
+
+--------------------------------------------------
+## Semaine 12 :
+
+
+
+--------------------------------------------------
+## Semaine 13 :
+
+
+--------------------------------------------------
+## Semaine 14 :
+
+
 
 
 
