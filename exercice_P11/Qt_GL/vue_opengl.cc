@@ -15,10 +15,10 @@ void VueOpenGL::dessine(Enceinte const& a_dessiner)
   QMatrix4x4 matrice;
   //Dessine le 2e cube
   matrice.setToIdentity();
- matrice.translate(10,10,10);
- matrice.scale(10);
+ matrice.translate(a_dessiner.get_largeur()/2,a_dessiner.get_profondeur()/2,a_dessiner.get_hauteur()/2);
+
  matrice.rotate(0.0, 0.0, 0.0, 0.0);
-  dessineEnceinte(matrice);
+  dessineEnceinte(matrice,a_dessiner);
 }
 
 void VueOpenGL:: dessine(Neon const&  a_dessiner){
@@ -28,10 +28,13 @@ QMatrix4x4 matrice;
   matrice.translate(a_dessiner.get_infos(0), a_dessiner.get_infos(1), a_dessiner.get_infos(2));
   matrice.scale(0.3);
   matrice.rotate(0.0, 0.0, 0.0, 0.0);
-  dessineCube(matrice);
+
+if (a_dessiner.get_couleur()==true){dessineSphere(matrice,a_dessiner.get_infos(7)/800,1-(a_dessiner.get_infos(7)/800),0.0);}
+else{dessineCube(matrice);}
   QMatrix4x4 matrice1;
   matrice1.setToIdentity();
 if (a_dessiner.get_trace()==true){dessinetrace(a_dessiner,matrice1);}
+
 }
 
 
@@ -51,7 +54,8 @@ void VueOpenGL:: dessine(Argon const& a_dessiner){
   matrice.rotate(0.0, 0.0, 0.0, 0.0);
   matrice.translate(a_dessiner.get_infos(0), a_dessiner.get_infos(1), a_dessiner.get_infos(2));
   matrice.scale(0.3);
-  dessinePyramide(matrice);
+  if (a_dessiner.get_couleur()==true){dessineSphere(matrice,a_dessiner.get_infos(7)/800,1-(a_dessiner.get_infos(7)/800),0.0);}
+  else{dessinePyramide(matrice);}
   QMatrix4x4 matrice1;
   matrice1.setToIdentity();
 if (a_dessiner.get_trace()==true){dessinetrace(a_dessiner,matrice1);}
@@ -64,7 +68,8 @@ void VueOpenGL:: dessine(Helium const& a_dessiner){
     matrice.translate(a_dessiner.get_infos(0), a_dessiner.get_infos(1),a_dessiner.get_infos(2));
     matrice.scale(0.3);
     matrice.rotate(0.0, 0.0, 0.0, 0.0);
-    dessineSphere(matrice);
+    if (a_dessiner.get_couleur()==true){dessineSphere(matrice,a_dessiner.get_infos(7)/800,1-(a_dessiner.get_infos(7)/800),0.0);}
+    else{dessineSphere(matrice);}
     QMatrix4x4 matrice1;
     matrice1.setToIdentity();
 if (a_dessiner.get_trace()==true){dessinetrace(a_dessiner,matrice1);}
@@ -125,6 +130,7 @@ void VueOpenGL::init()
    */
   glEnable(GL_DEPTH_TEST);
   glEnable(GL_CULL_FACE);
+  sphere.initialize();                                      // initialise la sphère
 
   initializePosition();
 }
@@ -137,6 +143,8 @@ void VueOpenGL::initializePosition()
   matrice_vue.translate(0, 0, -12);
   matrice_vue.rotate(60.0, 0.0, 1.0, 0.0);
   matrice_vue.rotate(45.0, 0.0, 0.0, 1.0);
+
+
 }
 
 // ======================================================================
@@ -230,61 +238,29 @@ void VueOpenGL::dessinePyramide(QMatrix4x4 const& point_de_vue)
     prog.setAttributeValue(SommetId, -1.0, -1.0, +1.0); // Sommet 3 (sommet du côté)
 
     // Face 2
-    prog.setAttributeValue(CouleurId,+ 0.0,+ 0.0, +1.0,1); // Bleu
+    prog.setAttributeValue(CouleurId,+ 0.0,+ 0.0, +1.0); // Bleu
     prog.setAttributeValue(SommetId,+ 0.0,+ 0.0,+ 0.0);   // Sommet 1 (sommet de la base)
     prog.setAttributeValue(SommetId, +0.0, -1.0,+ 0.0);  // Sommet 2 (coin de la base)
     prog.setAttributeValue(SommetId,+ 1.0, -1.0,+ 1.0);  // Sommet 3 (sommet du côté)
 
     // Face 3
-    prog.setAttributeValue(CouleurId, 1.0, 1.0, 0.0,1); // Jaune
+    prog.setAttributeValue(CouleurId, 1.0, 1.0, 0.0); // Jaune
     prog.setAttributeValue(SommetId, -1.0, -1.0, 1.0); // Sommet 1 (coin de la base)
     prog.setAttributeValue(SommetId, 1.0, -1.0, 1.0); // Sommet 2 (coin de la base)
     prog.setAttributeValue(SommetId, 0.0, -1.0, 0.0); // Sommet 3 (sommet du côté)
 
     glEnd();
 }
-void VueOpenGL::dessineSphere(QMatrix4x4 const& point_de_vue)
+void VueOpenGL::dessineSphere (QMatrix4x4 const& point_de_vue,
+                               double rouge, double vert, double bleu)
 {
-    prog.setUniformValue("vue_modele", matrice_vue * point_de_vue);
-
-    const float radius = 1.0f;
-    const int numSegments = 32;
-
-    glBegin(GL_TRIANGLES);
-
-    for (int j = 0; j < numSegments; ++j)
-    {
-        for (int i = 0; i < numSegments; ++i)
-        {
-            float theta1 = (float)(j) / (float)(numSegments) * M_PI * 2;
-            float theta2 = (float)(j + 1) / (float)(numSegments) * M_PI * 2;
-            float phi1 = (float)(i) / (float)(numSegments) * M_PI;
-            float phi2 = (float)(i + 1) / (float)(numSegments) * M_PI;
-
-            QVector3D p1(radius * sin(phi1) * cos(theta1), radius * sin(phi1) * sin(theta1), radius * cos(phi1));
-            QVector3D p2(radius * sin(phi1) * cos(theta2), radius * sin(phi1) * sin(theta2), radius * cos(phi1));
-            QVector3D p3(radius * sin(phi2) * cos(theta1), radius * sin(phi2) * sin(theta1), radius * cos(phi2));
-            QVector3D p4(radius * sin(phi2) * cos(theta2), radius * sin(phi2) * sin(theta2), radius * cos(phi2));
-
-            // Triangle 1
-            prog.setAttributeValue(CouleurId, 1.0, 0.0, 0.0); // Rouge
-            prog.setAttributeValue(SommetId, p1.x(), p1.y(), p1.z());
-            prog.setAttributeValue(SommetId, p2.x(), p2.y(), p2.z());
-            prog.setAttributeValue(SommetId, p3.x(), p3.y(), p3.z());
-
-            // Triangle 2
-            prog.setAttributeValue(CouleurId, 0.0, 1.0, 0.0); // Vert
-            prog.setAttributeValue(SommetId, p4.x(), p4.y(), p4.z());
-            prog.setAttributeValue(SommetId, p3.x(), p3.y(), p3.z());
-            prog.setAttributeValue(SommetId, p2.x(), p2.y(), p2.z());
-        }
-    }
-
-    glEnd();
+  prog.setUniformValue("vue_modele", matrice_vue * point_de_vue);
+  prog.setAttributeValue(CouleurId, rouge, vert, bleu);  // met la couleur
+  sphere.draw(prog, SommetId);                           // dessine la sphère
 }
 
 
-void VueOpenGL::dessineEnceinte(QMatrix4x4 const& point_de_vue)
+void VueOpenGL::dessineEnceinte(QMatrix4x4 const& point_de_vue,Enceinte const& E)
 {
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -296,17 +272,21 @@ void VueOpenGL::dessineEnceinte(QMatrix4x4 const& point_de_vue)
     // Set line color to white for visibility
     prog.setAttributeValue(CouleurId, 1.0, 1.0, 1.0, 1.0); // white
 
-    // Define vertices for the enclosure
-    GLfloat vertices[8][3] = {
-        {-1.0, -1.0, -1.0},
-        {-1.0, -1.0,  1.0},
-        {-1.0,  1.0, -1.0},
-        {-1.0,  1.0,  1.0},
-        { 1.0, -1.0, -1.0},
-        { 1.0, -1.0,  1.0},
-        { 1.0,  1.0, -1.0},
-        { 1.0,  1.0,  1.0}
-    };
+    double h = E.get_hauteur();
+        double l = E.get_largeur();
+        double p = E.get_profondeur();
+
+        // Define vertices for the enclosure with specified dimensions
+        GLdouble vertices[8][3] = {
+            {-l / 2, -p / 2, -h / 2},
+                    {-l / 2,  p / 2, -h / 2},
+                    { l / 2, -p / 2, -h / 2},
+                    { l / 2,  p / 2, -h / 2},
+                    {-l / 2, -p / 2,  h / 2},
+                    {-l / 2,  p / 2,  h / 2},
+                    { l / 2, -p / 2,  h / 2},
+                    { l / 2,  p / 2,  h / 2}
+        };
 
     // Define the edges of the enclosure
     GLint edges[12][2] = {

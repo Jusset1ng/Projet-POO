@@ -20,13 +20,15 @@ c.set_enceinte(Enceinte(20,20,20));
 c.set_epsilon(1.0);
       //c.ajouter_particule(new Helium(1 ,1, 1,0, 0, 0,4.002602));
       //c.ajouter_particule(new Neon(1, 18.5, 1 ,0 ,0.2, 0 ,20.1797));
-      c .ajouter_particule(new Argon(1, 1, 3.1 ,0, 0, -0.5,39.948));
+      //c .ajouter_particule(new Argon(1, 1, 3.1 ,0, 0, -0.5,39.948));
 
-      c.initialise_rd_neon(1000,10);
-      c.initialise_rd_helium(1000,10);
-      c.initialise_rd_argon(100,10);
+      c.initialise_rd_neon(300,10);
+      c.initialise_rd_helium(300,10);
+      c.initialise_rd_argon(300,10);
 
       c.set_forcage(true);
+
+      resize(1500, 400);
        }
 // ======================================================================
 void GLWidgetdeux::resizeGL(int width, int height)
@@ -35,7 +37,7 @@ void GLWidgetdeux::resizeGL(int width, int height)
    * fenêtre OpenGL doit dessiner.
    * Ici on lui demande de dessiner sur toute la fenêtre.
    */
-  glViewport(0, 0, width, height);
+  glViewport(0,0, width, height);
 
   /* Puis on modifie la matrice de projection du shader.
    * Pour ce faire on crée une matrice identité (constructeur
@@ -78,10 +80,10 @@ void GLWidgetdeux::paintGL()
 
         QFont font("Arial", 12);
         painter.setFont(font);
-        QString text = " L'energie cinetique moyenne est : " + QString::number(c.get_Ecin())+"[J]";
+        QString text = " L'energie cinetique moyenne estimatrice de la température T  est de: " + QString::number(c.get_Ecin())+"[J]";
         QString text1 = " Le nombre actuel de chocs avec les parois est " + QString::number(c.get_comptechocparois());
-        QString text2 = " La pression actuelle est  " + QString::number(c.get_pression())+" [Pa]";
-       QString text3 = " La loi des gaz parfait est:  " + QString::number(c.calculer_pression()*(1/c.calculer_Ecin()));
+        QString text2 = " La pression actuelle P est de " + QString::number(c.get_pression())+" [Pa]";
+       QString text3 = "  Selon La loi des gaz parfait P/T est égal à:  " + QString::number(c.calculer_pression()*(1/c.calculer_Ecin()));
 
         painter.drawText(20, 40, text);
         painter.drawText(20, 80, text1);
@@ -182,7 +184,7 @@ void GLWidgetdeux::timerEvent(QTimerEvent* event)
   const double dt = chronometre.elapsed() / 1000.0;
   chronometre.restart();
 
-  c.evolue(c.pas);
+  c.evolue(c.get_pas());
   update();
 }
 

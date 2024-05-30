@@ -18,6 +18,7 @@ SOURCES += \
     main_qt_gl.cc \
     glwidget.cc \
     glwidgetdeux.cc\
+    glsphere.cc\
     vue_opengl.cc\
     ../general/Systeme.cc
 
@@ -26,6 +27,7 @@ HEADERS += \
     glwidgetdeux.h\
     vertex_shader.h \
     vue_opengl.h \
+    glsphere.h\
     ../general/Dessinable.h \
     ../general/SupportADessin.h \
     ../general/Systeme.h

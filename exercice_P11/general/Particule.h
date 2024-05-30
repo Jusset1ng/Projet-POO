@@ -15,6 +15,7 @@ class Particule : public Dessinable {
     Vecteur3D v;
     double masse;
     bool trace;
+    bool couleur;
     double comptechocparois;
     int coordchocparoi;
     double vitessenormalechocparoi;
@@ -26,10 +27,10 @@ class Particule : public Dessinable {
 
     public:
     
-        Particule(double x, double y, double z, double vx, double vy, double vz, double masse, bool trace = false)
-            : pos(x, y, z), v(vx, vy, vz), masse(masse), trace(trace) {}
-            Particule(double masse, bool trace = false)
-            : pos(), v(), masse(masse), trace(trace) {}
+        Particule(double x, double y, double z, double vx, double vy, double vz, double masse, bool trace = false,bool couleur=false)
+            : pos(x, y, z), v(vx, vy, vz), masse(masse), trace(trace),couleur(couleur) {}
+            Particule(double masse, bool trace = false,bool couleur=false)
+            : pos(), v(), masse(masse), trace(trace),couleur(couleur) {}
     
 
     Particule(const Particule& autre): pos(autre.pos), v(autre.v), masse(autre.masse) {}
@@ -79,7 +80,10 @@ class Particule : public Dessinable {
 
     void reset_vitessenormalechocparoi(){vitessenormalechocparoi=0;}
 
+    bool get_couleur() const {return couleur;}
 
+    void change_couleur(){if(couleur==false){couleur=true;}
+                         else{couleur=false;}}
 };
 
 

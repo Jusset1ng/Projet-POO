@@ -17,9 +17,9 @@ class Systeme :public Dessinable{
 
     Enceinte E;
 
-double comptechocparois;
+double comptechocsparois;
 
-double moyennevitessesnormales;
+double comptevitessesnormalesxmasses;
 
 double pression;
 
@@ -35,12 +35,14 @@ double Ecin;
 
         static constexpr double R = 8.314472;
 
+        const double pas=0.001;
+
     public:
 
-    const double pas=0.01;
 
+        double get_pas (){return pas;}
     
-    Systeme() :  E () ,comptechocparois(0){}
+    Systeme() :  E () ,comptechocsparois(0){}
     
     Systeme(double Eps) : Epsilon(Eps) {}
 
@@ -74,7 +76,7 @@ double Ecin;
 
     void affiche_systeme() const;
 
-    double get_comptechocparois(){return comptechocparois;}
+    double get_comptechocparois(){return comptechocsparois;}
 
     void set_temperature(double t){if(t>0) temperature = t;}
 
@@ -93,6 +95,8 @@ double Ecin;
        double get_Ecin(){return Ecin;}
 
        double get_pression(){return pression;}
+
+       void change_couleur();
 };
 
 std::ostream& operator<<(std::ostream& sortie, const Systeme& S) ;

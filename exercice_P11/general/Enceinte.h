@@ -12,10 +12,10 @@ class Enceinte: public Dessinable {
 
 private:
 
+
     double largeur;     //x
     double profondeur;  //y
-    double hauteur;     //z
-
+    double hauteur;//z
     Tab_Cases kase;
 
     static constexpr double A_to_cm = 1;

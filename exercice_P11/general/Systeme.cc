@@ -15,29 +15,19 @@ double Systeme::calculer_Ecin()
     for(size_t i(0);i<particules.size();++i)
 { double masse = particules[i]->get_infos(6);
         double vitesse = particules[i]->get_vitesse().norme();
-        Emoy += 0.5 * masse * std::pow(vitesse, 2.0);}
+        Emoy += 0.5 * masse*1.66*pow(10,-24)* std::pow(vitesse, 2.0);}
 
 Emoy=Emoy/particules.size();
 return Emoy;
 }
 double Systeme::calculer_pression()
-   {double pression(0);
-
-    if (particules.empty()) {
-            return pression;
+   {double p(0);
+    if (comptechocsparois == 0) {
+            return 0;  // Pour éviter la division par zéro
         }
-double masse(0);
-double vitessenormale(0);
-
-    for(size_t i(0);i<particules.size();++i)
-{  masse += particules[i]->get_infos(6);
-        vitessenormale += particules[i]->get_vitessenormalechocparoi();
-        }
-    vitessenormale=vitessenormale/particules.size();
-    masse=masse/particules.size();
-    pression +=comptechocparois*2  * masse * vitessenormale;
-//pression=std::abs(pression);
-return pression;
+    p +=(2  * comptevitessesnormalesxmasses)/comptechocsparois;
+p=std::abs(p);
+return p;
    }
 
 void Systeme:: ajouter_particule(Particule* p) {
@@ -112,16 +102,20 @@ std::cout << "La particule " << p1 << " entre en collision avec une autre partic
 void Systeme::evolue(double dt){//deplacement choc, rebond...
                                 //on regarde toutes les particules dans le meme ordre (deterministe) et choc parois puis choc particules:
     //deplacement infinitésimal du a la vitesse:
-    comptechocparois=0;
+    comptechocsparois=0;
+comptevitessesnormalesxmasses=0;
+
     for(size_t p1(0); p1 < particules.size(); ++p1){
+        particules[p1]->reset_comptechocparois();
+        particules[p1]->reset_vitessenormalechocparoi();
         particules[p1]->evolue(dt);
         particules[p1]->choc_paroi(p1, E.get_largeur(), E.get_profondeur(), E.get_hauteur());
         Ecin=calculer_Ecin();
-        comptechocparois+=particules[p1]->get_comptechocparois();
-        pression=calculer_pression();
-                particules[p1]->reset_comptechocparois();
-
+        comptevitessesnormalesxmasses+=particules[p1]->get_vitessenormalechocparoi()*particules[p1]->get_infos(6)*1.66*pow(10,-24);
+        comptechocsparois+=particules[p1]->get_comptechocparois();
     }
+    pression=calculer_pression();
+
 
     for(size_t p1(0); p1 < particules.size(); ++p1){//pour pouvoir afficher l'index i conformément au main attendu (voir affichage)
         std::vector<unsigned int> candidats;
@@ -218,7 +212,13 @@ void Systeme::initialise_rd_helium(unsigned int nb_part, double masse){
 void Systeme::initialise_rd_argon(unsigned int nb_part, double masse){
         Argon a(0);
         a.initialise_rd(nb_part, masse, *this);
+
     }
+
+void Systeme::change_couleur()
+{for (size_t i(0);i<particules.size();++i)
+{particules[i]->change_couleur();}}
+
 
 //----------FONCTION----------
 

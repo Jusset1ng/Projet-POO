@@ -25,7 +25,7 @@ void Particule::evolue(double dt){
             memoire.pop_back();
     }
     pos += v*dt;
-
+    updatevitessenormalechocparoi();
 }
 
 void Particule::evolue(double dt, size_t i, Enceinte& E){//surcharge de evolue: methode avec decoupage de l'enceinte (P14)
@@ -132,6 +132,7 @@ double Particule::get_infos(int n)const{
     if (n==4) return v.get_coord(1);
     if (n==5) return v.get_coord(2);
     if (n==6) return masse;
+    if (n==7) return v.norme();
     return 0;}
 
 

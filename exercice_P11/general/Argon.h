@@ -5,10 +5,10 @@
 
 class Argon : public Particule {
 public:
-    Argon(double x, double y, double z, double vx, double vy, double vz, double masse, bool trace = false) :
-            Particule(x, y, z, vx, vy, vz, masse, trace) {}
-    Argon(double masse, bool trace = false) :
-        Particule(masse, trace) {}
+    Argon(double x, double y, double z, double vx, double vy, double vz, double masse, bool trace = false,bool couleur =false) :
+            Particule(x, y, z, vx, vy, vz, masse, trace,couleur) {}
+    Argon(double masse, bool trace = false,bool couleur =false) :
+        Particule(masse, trace,couleur) {}
 
     std::ostream& affiche(std::ostream& sortie) const override;
     
