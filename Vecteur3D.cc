@@ -1,8 +1,5 @@
-
- #include <iostream>
 #include "Vecteur3D.h"
-#include <cmath>
-using namespace std;
+
 
 //--------METHODE--------//
 
@@ -19,7 +16,7 @@ void Vecteur3D::set_coord(int n, double a ){
 		if (n==2) z=a;
 		}
 	
-ostream& Vecteur3D::affiche(ostream& sortie)const {
+std::ostream& Vecteur3D::affiche(std::ostream& sortie)const {
     sortie << x << " " << y << " " << z ;
     return sortie;
 }
@@ -27,10 +24,14 @@ ostream& Vecteur3D::affiche(ostream& sortie)const {
 
 
 bool Vecteur3D::compare(Vecteur3D const& vect, double p = 1e-10) const{
-    if(( abs(vect.x - x) < p) and ( abs(vect.y - y) < p) and ( abs(vect.z - z) < p)) return true;
-	else return false;}	
-		
+    if((abs(vect.x - x) < p) and (abs(vect.y - y) < p) and (abs(vect.z - z) < p)) return true;
+	else return false;}
 
+bool Vecteur3D::compare2(Vecteur3D const& vect, double p = 1e-10) const{//pour le pavage cubique
+	if((floor(x)/p) == floor(vect.x/p) && (floor(y)/p) == floor(vect.y/p) && (floor(z)/p) == floor(vect.z/p)) return true;
+	else return false;
+
+}
 			
 Vecteur3D Vecteur3D::addition(const Vecteur3D& autre) const {
 		
@@ -82,7 +83,7 @@ Vecteur3D Vecteur3D::unitaire() const{
  
 //--------OPERATOR---------//
 
-ostream& operator<<(ostream& sortie, Vecteur3D const& v) 
+std::ostream& operator<<(std::ostream& sortie, Vecteur3D const& v) 
 	{return v.affiche(sortie);}
 	
 bool operator==(Vecteur3D const& v1, Vecteur3D const& v2)
