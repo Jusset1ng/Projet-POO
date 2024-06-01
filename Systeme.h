@@ -18,12 +18,10 @@ class Systeme :public Dessinable{
     GenerateurAleatoire tirage; //peut etre initialisé avec la meme graine pour debugger
     double Epsilon;
     double temperature = 290;
-    static constexpr double R = 8.314472;//constante des Gazs parfaits
 
     bool forcer = false; //Si true: Premier choc avec zenith à pi/2 et azimut a pi/3
 
     public:
-    Systeme() :  E (){}
     
     Systeme(double Eps) : Epsilon(Eps) {}
 

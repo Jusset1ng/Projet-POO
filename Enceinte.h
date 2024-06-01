@@ -25,15 +25,6 @@ private:
 public:
 
     Enceinte(double a = 20.0, double b = 20.0, double c = 20.0) : largeur(a), profondeur(b), hauteur(c){     // Redimensionner le vecteur kase pour correspondre aux dimensions a, b, c
-	if(a <= 0) {
-	  a = 20;
-	  std::cout << "Largeur invalide, largeur = 20." << std::endl;}
-	if(b <= 0) {
-	  b = 20;
-	  std::cout << "Profondeur invalide, profondeur = 20." << std::endl;}
-	if(c <= 0) {
-	  a = 20;
-	  std::cout << "Hauteur invalide, hauteur = 20." << std::endl;}
         redimensionne(static_cast<unsigned int>(largeur), static_cast<unsigned int>(profondeur), static_cast<unsigned int>(hauteur));
     }
 

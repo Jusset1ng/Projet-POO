@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Neon.h"
 
  std::ostream& Neon::affiche(std::ostream& sortie) const {

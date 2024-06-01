@@ -26,9 +26,9 @@ void Particule::evolue(double dt){
 
 void Particule::evolue(double dt, size_t i, Enceinte& E){//surcharge de evolue: methode avec decoupage de l'enceinte (P14)
 
-    size_t X = floor(this->pos.get_coord(0) * A_to_cm);
-    size_t Y = floor(this->pos.get_coord(1) * A_to_cm);
-    size_t Z = floor(this->pos.get_coord(2) * A_to_cm);
+    size_t X = floor(this->pos.get_coord(0) * precision);
+    size_t Y = floor(this->pos.get_coord(1) * precision);
+    size_t Z = floor(this->pos.get_coord(2) * precision);
 
     E.efface_particule(i, X, Y, Z);//on supprime l'index de la particule dans la case courante
     
@@ -43,9 +43,9 @@ void Particule::evolue(double dt, size_t i, Enceinte& E){//surcharge de evolue: 
 
     this->choc_paroi(i, E.get_largeur(), E.get_profondeur(), E.get_hauteur()); //je reteste les chocs contre les parois pour ne pas ajouter de mauvais indices dans le tableau.ie si la particule est sortie de l'enceinte entre temps
 
-    X = floor(this->pos.get_coord(0) * A_to_cm);
-    Y = floor(this->pos.get_coord(1) * A_to_cm);
-    Z = floor(this->pos.get_coord(2) * A_to_cm);
+    X = floor(this->pos.get_coord(0) * precision);
+    Y = floor(this->pos.get_coord(1) * precision);
+    Z = floor(this->pos.get_coord(2) * precision);
     //std::cout << "J'ajoute la nouvelle position : " << X << " " << Y << " " << Z << std::endl;
     E.ajoute_index(i, X, Y, Z); //on ajoute l'index de la particule dans sa nouvelle case
     

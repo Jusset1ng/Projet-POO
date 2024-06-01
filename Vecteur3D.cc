@@ -1,8 +1,5 @@
-
-#include <iostream>
 #include "Vecteur3D.h"
-#include <cmath>
-using namespace std;
+
 
 //--------METHODE--------//
 
@@ -19,7 +16,7 @@ void Vecteur3D::set_coord(int n, double a ){
 		if (n==2) z=a;
 		}
 	
-ostream& Vecteur3D::affiche(ostream& sortie)const {
+std::ostream& Vecteur3D::affiche(std::ostream& sortie)const {
     sortie << x << " " << y << " " << z ;
     return sortie;
 }
@@ -86,7 +83,7 @@ Vecteur3D Vecteur3D::unitaire() const{
  
 //--------OPERATOR---------//
 
-ostream& operator<<(ostream& sortie, Vecteur3D const& v) 
+std::ostream& operator<<(std::ostream& sortie, Vecteur3D const& v) 
 	{return v.affiche(sortie);}
 	
 bool operator==(Vecteur3D const& v1, Vecteur3D const& v2)

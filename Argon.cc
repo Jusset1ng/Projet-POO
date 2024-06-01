@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Argon.h"
 
  std::ostream& Argon::affiche(std::ostream& sortie) const {

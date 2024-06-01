@@ -9,7 +9,7 @@ int main(){
 
 double Epsilon(1.0);
 
-Systeme S(20, 20, 20, Epsilon); // Enceinte de dim 20 de cote et de pas d'espace 1 découpé en cases
+Systeme S(1.0); // Enceinte de dim 20 de cote et de pas d'espace 1 découpé en cases
 Textviewer T(cout);
 
 

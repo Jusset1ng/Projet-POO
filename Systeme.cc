@@ -1,7 +1,3 @@
-#include <iostream>
-#include <vector>
-#include <memory>
-#include <cmath>
 #include "Systeme.h"
 
 //----------METHODES----------
@@ -169,7 +165,6 @@ void Systeme::initialise_rd_argon(unsigned int nb_part, double masse){
         Argon a(0);
         a.initialise_rd(nb_part, masse, *this);
     }
-
 
 //----------OPERATOR------------
     

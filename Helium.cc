@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Helium.h"
 
  std::ostream& Helium::affiche(std::ostream& sortie) const {

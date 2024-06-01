@@ -3,13 +3,10 @@
 #include "Neon.h"
 #include "Argon.h"
 using namespace std;
-
-
-
 	
 
 int main() {
-Systeme S;
+Systeme S(1);
 Textviewer T(cout);
 
 S.ajouter_particule(new Helium (1 ,1, 1, 0, 0, 0,4.002602));
