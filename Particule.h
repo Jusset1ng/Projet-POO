@@ -21,7 +21,7 @@ class Particule : public Dessinable {
 
     static constexpr double R = 8.314472;
 
-    static constexpr double A_to_cm = 1;
+    static constexpr double precision = 1;
 
 
     public:
