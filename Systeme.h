@@ -23,9 +23,9 @@ class Systeme :public Dessinable{
 
     public:
     
-    Systeme(double Eps) : Epsilon(Eps) {}
+    Systeme(double Eps = 1) : Epsilon(Eps) {}
 
-    Systeme(double a, double b, double c, double Eps) :  E(a, b, c), Epsilon(Eps) {}
+    Systeme(double a, double b, double c, double Eps = 	1) :  E(a, b, c), Epsilon(Eps) {}
 
     void set_tirage(double graine){tirage = graine;} // initialise une graine
 
