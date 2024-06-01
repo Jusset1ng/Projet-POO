@@ -1,5 +1,7 @@
 #pragma once
 #include <iostream>
+#include <cmath>
+
 class Vecteur3D {
 	private: 
 	double x;
