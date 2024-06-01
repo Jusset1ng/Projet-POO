@@ -10,7 +10,7 @@ using namespace std;
 
 int main(){
 	
-Systeme S(1);
+Systeme S;
 Textviewer T(cout);
 
 
