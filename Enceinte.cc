@@ -4,9 +4,9 @@
 
 
 void Enceinte::redimensionne(unsigned int a, unsigned int b, unsigned int c) {// Redimensionner les vecteurs en fonction de la taille de l'enceinte
-        a/= A_to_cm;
-        b/= A_to_cm;
-        c/= A_to_cm;
+        a*= A_to_cm;
+        b*= A_to_cm;
+        c*= A_to_cm;
         kase.resize(a);  
         for (unsigned int i = 0; i < a; ++i) {
             kase[i].resize(b);  
