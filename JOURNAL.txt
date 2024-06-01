@@ -6,127 +6,83 @@ Vous pouvez ajouter vos propres tâches si vous le jugez utile
 (p.ex. décomposition plus fine).
 
 [V] créer le JOURNAL                                    	 1
-[ ] lire complètement le descriptif général                  	??
-[ ] s'inscrire en binôme                                      	??
-[ ] fusionner les deux projets (y compris les fichiers JOURNAL)	??
-[ ] Makefile                                               	??
-[ ] Vecteur finis (pleinement opérationnels et testés)  	??
-[ ] fichier REPONSES                                         	??
-[ ] Particules simples                                         	??
-[ ] Enceintes                                           	??
-[ ] Dessinable + SupportADessin                                	??
-[ ] System                                                	??
-[ ] exerciceP9 (simulation textuelle)                         	??
-[ ] Graphisme : cadre général (reprise des exemples tuto)    	??
-[ ] Graphisme : adaptation à ce projet spécifique               ??
-[ ] Amélioration du modèle                                     	??
-[ ] Mouvement brownien                                     	??
-[ ] Collisions avancées                                     	??
-[ ] fichier CONCEPTION                                         	??
-[ ] fichier README                                        	??
-[ ] fichier NOMS                                        	??
+[V] lire complètement le descriptif général                  	 1
+[V] s'inscrire en binôme                                      	 2
+[V] fusionner les deux projets (y compris les fichiers JOURNAL)	14
+[V] Makefile                                               	 3
+[V] Vecteur finis (pleinement opérationnels et testés)  	 4
+[V] fichier REPONSES                                         	10
+[V] Particules simples                                         	 5
+[V] Enceintes                                           	 7
+[V] Dessinable + SupportADessin                                	 7
+[V] System                                                	 7
+[V] exerciceP9 (simulation textuelle)                         	 8
+[V] Graphisme : cadre général (reprise des exemples tuto)    	 9
+[V] Graphisme : adaptation à ce projet spécifique                9
+[V] Amélioration du modèle                                     	10
+[V] Mouvement brownien                                     	11
+[V] Collisions avancées                                     	12
+[V] fichier CONCEPTION                                         	14
+[V] fichier README                                        	14
+[V] fichier NOMS                                        	14
 
 ======================================================================
 # A FAIRE (PROCHAINE ETAPE)
 
 Mettez ici ce que vous pensez devoir être la ou les 2 prochaines étapes
-pour chacun. Par exemple :
+pour chacun. Par exemple :Terminer les fichiers textes et relire tout un dernière fois
 
-Ron: debugger les Vecteurs
-Hermione: finir le reste du projet
 
 ======================================================================
 # SUIVI
 
 ## Semaine 2 :
 
-décrire ici ce que vous avez fait en semaine 2
+Premiers essai de poo en implémentant les vecteurs 3D pour l'instant dans un simple fichier .cc
+Nous n'avons pas encore lu la mini référence sur les make file et cela n'a pas l'air si évident
+Nous avons cependant commencé a lire le tutoriel graphisme qui prend pas mal de temps
 
 --------------------------------------------------
 ## Semaine 3 :
+
+Nous avons commencé à séparer les fichiers en .h et .cc et copié collé le makefile en adaptant avec nos noms de fichier
+Pour l'instant les taches hebdomadaires sont assez rapides donc nous le faisons ensemble
 
 
 
 --------------------------------------------------
 ## Semaine 4 :
 
+Emmanuel: J'ai tout fais jusqu'à la question P4.3 : constructeurs et comparaison et opérateur de comparaison, j'ai aussi décidé d'implémenter le constructeur de copie voir fichier réponse
 
+Justin: J'ai complété ce qui restait à faire mais je ne vois pas vraiment a quoi va servir le vecteur unitaire, je l'ai quand même mis on verra bien..
 
 --------------------------------------------------
 ## Semaine 5 :
+
+Apres s'être réparti les taches (on a fait simple : une classe chacun) voici les observations que nous avons tiré de cette semaine:
+
+Justin: 
+
+Il a fallu créer la classe Particule avec beaucoup d'attention, car celle-ci n'est en fait pas une sous classe de Vecteur3D car une particule n'est pas un vecteur, en revanche ses instances le sont, ce à quoi je n'avais pas pensé immédiatement. La difficulté pour moi s'est ensuite surtout présenté sur la fonction affiche() car j'avais totalement oublié l'existence de l'autre fonction affiche de la classe Vecteur3D qui permettait vraiment de faciliter le travail. Pas de problème avec le makefile que j'ai modifié sans difficulté, en revanche le retour du main de testParticule.cc ne me convient pas: une masse avec 6 décimales est assignée a la particule p1 mais après compilation je récupère une précision de 4. J'ai alors essayé de palier à ce problème en utilisant la bibliothèque <iomanip> et setprecision mais cela ne me convient toujours pas car cela rajoute des 0 inutiles aux autres valeurs. A voir si je trouve la solution, sinon j'attendrais la prochaine seance d'assistanat, aussi je me dis que cela vient peut être du compilateur car certain ont une précision d'origine de 6 ...
+
+Emmanuel:
+
+Pour la classe Enceinte. Nous l'avons pas encore jointe au programme et l'avons juste conçu pour l'instant sur un fichier a part et attendons d'en savoir plus sur son utilisation pour
+l'incorporée de facon idéal dans un fichier du programme.
+
 
 
 
 --------------------------------------------------
 ## Semaine 6 :
 
+A partir d'ici nous avons décidé de séparer nos parties telles que: Emmanuel s'occupe de la parti graphique, des classes textViewer dessinable etc... tout ce qui touche à la "visualisation" et Justin du coté particules système choc etc...
 
+Nous n'avons pas beaucoup avancé cette semaine mais il y a une semaine de vacance la semaine prochaine
 
 --------------------------------------------------
 ## Semaine 7 :
-
-
-
---------------------------------------------------
-## Semaine 8 :
-
-
-
---------------------------------------------------
-## Semaine 9 :
-
-
-
---------------------------------------------------
-## Semaine 10 :
-
-
-
---------------------------------------------------
-## Semaine 11 :
-
-
-
---------------------------------------------------
-## Semaine 12 :
-
-
-
---------------------------------------------------
-## Semaine 13 :
-
-
---------------------------------------------------
-## Semaine 14 :
-
-
-
-
-
-
-
-
-
-Partie 4 : 
-
-Apres s'être réparti les taches (on a fait simple : une classe chacun) voici les observations que nous avons tiré de cette semaine:
-
-JUstin
-
-Il a fallu créer la classe Particule avec beaucoup d'attention, car celle-ci n'est en fait pas une sous classe de Vecteur3D car une particule n'est pas un vecteur, 
-en revanche ses instances le sont, ce à quoi je n'avais pas pensé immédiatement. La difficulté pour moi s'est ensuite surtout présenté sur la fonction affiche() 
-car j'avais totalement oublié l'existence de l'autre fonction affiche de la classe Vecteur3D qui permettait vraiment de faciliter le travail. 
-Pas de problème avec le makefile que j'ai modifié sans difficulté, en revanche le retour du main de testParticule.cc ne me convient pas: une masse avec 6 décimales 
-est assignée a la particule p1 mais après compilation je récupère une précision de 4. J'ai alors essayé de palier à ce problème en utilisant la bibliothèque <iomanip> 
-et setprecision mais cela ne me convient toujours pas car cela rajoute des 0 inutiles aux autres valeurs. A voir si je trouve la solution, sinon j'attendrais la 
-prochaine seance d'assistanat, aussi je me dis que cela vient peut être du compilateur car certain ont une précision d'origine de 6 ...
-
-Emmanuel 
-
-Pour la classe Enceinte. Nous l'avons pas encore jointe au programme et l'avons juste concu pour l'instant sur un fichier a part et attendons d'en savoir plus sur son utlisation pour
-l'incorporée de facon idéal dans un fichier du programme.
-
-Partie 5:
 
 Emmanuel
 
@@ -140,6 +96,56 @@ Justin
 
 Nous faisons attention à l'organisation et à la lisibilité de notre programme et avons décidé de réunir la classe Particule et toutes ses sous classes dans le fichier 
 Particule.
-Par ailleur pour éviter le copier-collé on a redefint les méthodes affiche des sousclasse de Particule en utilisant la méthode hérité de Particule.
+Par ailleur pour éviter le copier-collé on a redevint les méthodes affiche des sousclasse de Particule en utilisant la méthode hérité de Particule.
+Pour la classe système et enceinte que nous avons mis dans le même .h nous avons décidé d'utiliser une vector de unique ptr sur particule pour éviter les fuites de mémoires et puis car une copie de particule n'aurait pas vraiment de sens
+Je me suis ensuite attaqué à la plus grosse difficulté selon moi depuis le début du projet qui était l'évolution du système comprenant les chocs et déplacements
+Apres de l'aide de notre assistant j'ai compris comment calculer les chocs contre les parois ce qui m'avait paru très flou en lisant sur le site. Pour les chocs entre particules j'ai décidé de faire des vector d'index étant donné qu'on utilise des unique par je ne peux pas passer de copie.  J'ai aussi rajouté un attribut forçage pour déterminer si le premier choc était forcé comme demandé.
+
+
+
+--------------------------------------------------
+## Semaine 8 :
+Serve noté, le week end nous avons amélioré les fichiers. 
+
+
+--------------------------------------------------
+## Semaine 9 :
+
+Emmanuel : partie graphique 
+
+
+--------------------------------------------------
+## Semaine 10 :
+
+Justin : implémentation de l'ajout de plusieurs particules aléatoirement dans l'enceinte. Pour se faire j'ai fait une méthode de système qui appel des méthode de Neon Argon ou Neon selon le gaz qu'on veut ajouté mais j'ai du refaire une méthode dans système appelée par celle dans les gazs pour pouvoir utiliser le générateur aléatoire, sinon j'aurais pu passer l'attribut tirage par référence et include Générateur aléatoire dans les sous classes de particule mais ça aurait fait du copier coller 
+
+--------------------------------------------------
+## Semaine 11 :
+
+Ascension, on a pas touché au projet
+
+--------------------------------------------------
+## Semaine 12 :
+
+Mouvement Brownien : nous avons décidé d'utiliser des deque pour pouvoir push front meme si des queue suffisait, comme ça la trace est éphémère ce qui est plus jolie et ne rempli pas l'enceinte au bout de 20sec. En revanche on a eu pas mal de problèmes car la trace bougeait avec la particule: elle faisait des translations qui faisait que ce n'était pas du tout ce que l'on attendait
+DONNE LA SOLUTION
+
+Pour l'autre modèle de collision il a fallu savoir comment on allait découper l'enceinte, nous avons décidé de créer un attribut vector tridimensionnel dans l'enceinte qui permettait que chaque case appartienne à l'enceinte. De plus comme on veut que l'enceinte soit partagé en case lors de son initialisation on utilise une méthode redimensionne qui fixe la taille des vestons. Je me suis aussi rendu compte que les longueurs de Enceinte devaient être positives donc j'ai rajouté un test dans le constructeur qui si échoue fixe la longueur arbitrairement à 20
+Ensuite il a fallu redéfinir deux méthodes évolue : une dans système et une dans particule mais l'avantage est qu'elles ont pas mal de points commun comme le déplacement et les chocs contres les parois. Il faut donc s'occuper des déplacements des index de particules d'une case à l'autre pendant une évolution. On procède de la même manière : si plus de deux particules sont dans une même case alors on fait un tirage aléatoire.
+Pour supprimer l'index dans l'ancienne case j'ai pas mal galéré car la suppression se passe dans enceinte donc lorsque j'utilisé l'iterateur pour find l'index dans la case correspondante je passais cet intérateur par copie en paramètre et donc il y avait des segmentation fault lors de l'utilisation de Erase avec l'itérateur car je n'avais pas compris que c'était un pointeur, il fallait donc le passer par référence. J'ai pallié à ce problème en faisant la recherche de l'index (find) dans la méthode de suppression de système directement
+
+--------------------------------------------------
+## Semaine 13 :
+
+ECRIS TES EXTENSIONS
+
+
+--------------------------------------------------
+## Semaine 14 :
+
+Nous avons fait le fichier conception et README et finalisé les extensions 
+Et nous avons repassé en revu tous les fichiers et supprimé des erreurs telles que des includes qui trainaient dans les .cc depuis le début
+
+
 
  
