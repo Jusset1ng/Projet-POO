@@ -171,19 +171,6 @@ void Systeme::initialise_rd_argon(unsigned int nb_part, double masse){
     }
 
 
-//----------FONCTION----------
-
-Vecteur3D tirage_v0(double L, GenerateurAleatoire tirage){
-
-    double z = tirage.uniforme(-L, L);
-    double phi;
-    do{
-        phi = tirage.uniforme(0, 2*M_PI);
-    }while(phi == 2*M_PI);
-    double r = sqrt(L*L-z*z);
-    return Vecteur3D(r*std::cos(phi), r*std::sin(phi), z);
-}
-
 //----------OPERATOR------------
     
     std::ostream& operator<<(std::ostream& sortie, const Systeme& S) {
