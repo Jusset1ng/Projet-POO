@@ -62,3 +62,5 @@ exerciceP13.o : exerciceP13.cc Systeme.h Neon.h Argon.h Helium.h
 
 exerciceP13: exerciceP13.o Systeme.o Particule.o Enceinte.o Neon.o Argon.o Helium.o Vecteur3D.o
 
+clean: #supprime tous les executables avec la commande make clean
+	rm -rf *.o all $(EXECUTABLES) 
