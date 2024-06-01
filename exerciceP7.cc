@@ -6,7 +6,7 @@ using namespace std;
 	
 
 int main() {
-Systeme S(1);
+Systeme S;
 Textviewer T(cout);
 
 S.ajouter_particule(new Helium (1 ,1, 1, 0, 0, 0,4.002602));
