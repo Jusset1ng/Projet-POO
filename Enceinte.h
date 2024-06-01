@@ -17,7 +17,7 @@ private:
 
     Tab_Cases kase;
 
-    static constexpr double A_to_cm = 1;
+    static constexpr double precision = 1;
 
 
     void redimensionne(unsigned int a, unsigned int b, unsigned int c);
